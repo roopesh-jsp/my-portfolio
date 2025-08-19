@@ -2,6 +2,14 @@
 @import "tw-animate-css";
 
 @custom-variant dark (&:is(.dark *));
+.custom-gradient-1 {
+  background: linear-gradient(135deg, #a259ff33, #377dff33);
+  border-radius: 50% 30% 50% 80% / 65% 55% 60% 70%;
+}
+.custom-gradient-2 {
+  background: linear-gradient(90deg, #43e7ad22, #377dff55);
+  border-radius: 60% 70% 75% 60% / 60% 65% 80% 70%;
+}
 
 @theme inline {
   --color-background: var(--background);

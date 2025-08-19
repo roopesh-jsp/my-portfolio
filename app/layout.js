@@ -1,13 +1,18 @@
-import { Geist, Geist_Mono } from "next/font/google";
+import NavBar from "@/components/NavBar";
 import "./globals.css";
+import { Poppins, Fira_Code } from "next/font/google";
+import { bg } from "@/data/constants";
+import GradientBackground from "@/components/GradientBox";
+import PinkOrangeGradientBg from "@/components/PinkOrangeGrad";
 
-const geistSans = Geist({
-  variable: "--font-geist-sans",
+const poppins = Poppins({
+  variable: "--font-poppins",
   subsets: ["latin"],
+  weight: ["400", "500", "700"],
 });
 
-const geistMono = Geist_Mono({
-  variable: "--font-geist-mono",
+const firaCode = Fira_Code({
+  variable: "--font-fira-code",
   subsets: ["latin"],
 });
 
@@ -20,8 +25,11 @@ export default function RootLayout({ children }) {
   return (
     <html lang="en">
       <body
-        className={`${geistSans.variable} ${geistMono.variable} antialiased`}
+        className={`${poppins.variable} ${firaCode.variable} antialiased bg-[#19191B] text-white overflow-hidden `}
       >
+        <GradientBackground />
+        <PinkOrangeGradientBg />
+        <NavBar />
         {children}
       </body>
     </html>

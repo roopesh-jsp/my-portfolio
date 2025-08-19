@@ -1,0 +1,122 @@
+"use client";
+import { navLinks } from "@/data/constants";
+import { secondary } from "@/data/constants";
+import Link from "next/link";
+import React, { useState } from "react";
+import { Menu, X } from "lucide-react";
+import { motion, AnimatePresence } from "framer-motion";
+import { usePathname } from "next/navigation"; // For active link (Next.js 13+)
+
+function NavBar() {
+  const [menuOpen, setMenuOpen] = useState(false);
+  const pathname = usePathname();
+
+  return (
+    <div className="flex items-center justify-between px-8 py-6 sticky top-0 z-20">
+      <h1 className="text-lg font-semibold tracking-tight">Enver</h1>
+
+      {/* Desktop Nav */}
+      <nav className="hidden md:flex gap-8 items-center">
+        {navLinks.map((ele) => (
+          <Link
+            key={ele.label}
+            href={ele.link}
+            className="transition-colors font-normal text-base"
+            style={{
+              color:
+                pathname === ele.link
+                  ? secondary // active page
+                  : "inherit",
+              fontWeight: 400,
+            }}
+            onMouseEnter={(e) => (e.target.style.color = secondary)}
+            onMouseLeave={(e) => {
+              if (pathname === ele.link) return;
+              e.target.style.color = "";
+            }}
+          >
+            {ele.label}
+          </Link>
+        ))}
+      </nav>
+      {/* Contact Us Button */}
+      <Link
+        href="/contact"
+        className="ml-6 hidden md:flex px-6 py-2 text-sm rounded border border-solid border-white/40 font-normal transition-colors hover:bg-[var(--secondary)] hover:text-white"
+        style={{
+          color: "inherit",
+          borderColor: "#ffffff66",
+        }}
+        onMouseEnter={(e) => (e.target.style.background = secondary)}
+        onMouseLeave={(e) => (e.target.style.background = "")}
+      >
+        Contact us
+      </Link>
+
+      {/* Mobile Hamburger */}
+      <button
+        onClick={() => setMenuOpen(!menuOpen)}
+        className="block md:hidden text-white"
+        aria-label={menuOpen ? "Close menu" : "Open menu"}
+      >
+        {menuOpen ? <></> : <Menu size={28} />}
+      </button>
+
+      {/* Mobile Drawer */}
+      <AnimatePresence>
+        {menuOpen && (
+          <motion.nav
+            key="mobile-nav"
+            initial={{ x: "100%" }}
+            animate={{ x: 0 }}
+            exit={{ x: "100%" }}
+            transition={{ type: "spring", damping: 20, stiffness: 200 }}
+            className="fixed top-0 right-0 w-3/4 h-full p-8 flex flex-col gap-6 md:hidden  bg-[#19191B] z-30"
+          >
+            <button
+              onClick={() => setMenuOpen(false)}
+              className="self-end mb-8 cursor-pointer"
+              aria-label="Close menu"
+            >
+              <X size={28} />
+            </button>
+            {navLinks.map((ele) => (
+              <Link
+                key={ele.label}
+                href={ele.link}
+                className="text-base font-normal transition-colors w-full text-center"
+                style={{
+                  color: pathname === ele.link ? secondary : "inherit",
+                  fontWeight: 400,
+                }}
+                onMouseEnter={(e) => (e.target.style.color = secondary)}
+                onMouseLeave={(e) => {
+                  if (pathname === ele.link) return;
+                  e.target.style.color = "";
+                }}
+                onClick={() => setMenuOpen(false)}
+              >
+                {ele.label}
+              </Link>
+            ))}
+            <Link
+              href="/contact"
+              className="mt-10 text-center px-6 py-2 rounded border border-solid border-[#ccc] text-sm font-normal transition-colors hover:bg-[var(--secondary)] hover:text-white"
+              style={{
+                color: "inherit",
+                borderColor: "#ccc",
+              }}
+              onMouseEnter={(e) => (e.target.style.background = secondary)}
+              onMouseLeave={(e) => (e.target.style.background = "")}
+              onClick={() => setMenuOpen(false)}
+            >
+              Contact us
+            </Link>
+          </motion.nav>
+        )}
+      </AnimatePresence>
+    </div>
+  );
+}
+
+export default NavBar;
