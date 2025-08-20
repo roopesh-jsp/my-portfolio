@@ -12,7 +12,7 @@ export default function GradientBackground() {
       "
       style={{
         background: "linear-gradient(54.37deg, #5454D4 0%, #5454D4 42%)",
-        opacity: 0.13,
+        opacity: 0.11,
         transform: "rotate(-54.37deg)",
       }}
     />

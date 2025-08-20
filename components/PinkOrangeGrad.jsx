@@ -4,7 +4,7 @@ export default function PinkOrangeGradientBg() {
       className="
         absolute
         top-[-100px] right-[-226px]
-        w-[267px] h-[999.3px]
+        w-[367px] h-[999.3px]
         rounded-[233.5px]
         z-0
         pointer-events-none
@@ -13,7 +13,7 @@ export default function PinkOrangeGradientBg() {
       style={{
         background:
           "linear-gradient(65.71deg, rgba(251, 168, 28, 0.26) 0%, rgba(224, 86, 136, 0.15) 100%)",
-        opacity: 0.15,
+        opacity: 0.25,
         transform: "rotate(65.71deg)",
       }}
     />

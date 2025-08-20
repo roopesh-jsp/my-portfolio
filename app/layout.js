@@ -25,7 +25,7 @@ export default function RootLayout({ children }) {
   return (
     <html lang="en">
       <body
-        className={`${poppins.variable} ${firaCode.variable} antialiased bg-[#19191B] text-white overflow-hidden `}
+        className={`${poppins.variable} ${firaCode.variable} antialiased bg-[#19191B] text-white overflow-x-hidden `}
       >
         <GradientBackground />
         <PinkOrangeGradientBg />
