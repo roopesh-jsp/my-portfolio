@@ -1,11 +1,12 @@
 import React from "react";
 import Image from "next/image";
 
-import me from "@/assests/me2.png";
 import circles from "@/assests/circles.png";
 import triangles from "@/assests/triangles.png";
 import zigzag from "@/assests/zigzag.png";
 import plus from "@/assests/plus.png";
+import PinkOrangeGradientBg from "./PinkOrangeGrad";
+import HeroImage from "./HeroImage";
 
 // bg gradient -> bg-gradient-to-b from-[#0f0f1a] to-[#1a1a2e]
 function Hero() {
@@ -27,26 +28,10 @@ function Hero() {
       </div>
 
       {/* Right Content */}
-      <div className="relative mt-12 md:mt-0 w-[70%]  lg:w-[45%]">
+      <div className="relative lg:mt-12 md:mt-0 w-[70%]  lg:w-[45%] mt-20">
         {/* Profile Image */}
-        <div className="relative flex items-center justify-center">
-          {/* Rotated Background Box */}
-          <div className="absolute w-[300px] h-[300px] bg-[#5454D4] rounded-2xl  rotate-45 z-0">
-            {/* Profile Image */}
-          </div>
-
-          {/* White Rotated Border */}
-          <div className="absolute w-[320px] h-[320px] border-2 rounded-xl border-white rotate-45 z-0"></div>
-          <div className="relative z-10 overflow-hidden top-[-20px]  rounded-lg">
-            <Image
-              src={me}
-              alt="Roopesh"
-              width={320}
-              height={380}
-              className="object-cover"
-            />
-          </div>
-        </div>
+        <HeroImage />
+        <PinkOrangeGradientBg />
 
         {/* Decorative Shapes */}
         <Image
