@@ -4,9 +4,9 @@ import Image from "next/image";
 
 const HeroImage = () => {
   return (
-    <div className="relative flex items-center justify-center">
+    <div className="relative flex items-center justify-center  ">
       {/* Blue box */}
-      <div className="relative w-[300px] h-[300px] rotate-[25deg] border-white border-2 bg-[#5454D4] rounded-xl z-10 ">
+      <div className="relative w-[55vw] h-[55vw] md:h-[300px] md:w-[300px] rotate-[25deg] border-white border-2 bg-[rgb(84,84,212)] rounded-xl z-10 ">
         {/* White curved lines overlay */}
         <svg
           className="absolute inset-0 w-full  h-full opacity-30"
@@ -40,13 +40,13 @@ const HeroImage = () => {
             alt="Roopesh"
             width={320}
             height={500}
-            className="object-cover rotate-[-25deg] absolute -translate-y-[110px] left-3"
+            className="object-cover rotate-[-25deg] absolute bottom-[-10%] left-[20%] z-30"
           />
         </div>
       </div>
 
       {/* White outline behind */}
-      <div className="absolute w-[300px] h-[300px] border-2 rounded-2xl border-white rotate-[25deg] z-0 -translate-x-[10px] -translate-y-[40px]"></div>
+      <div className="absolute w-[55vw] h-[55vw] md:h-[300px] md:w-[300px] border-2 rounded-2xl border-white rotate-[25deg] z-0 -translate-x-[10px] -translate-y-[40px]"></div>
     </div>
   );
 };

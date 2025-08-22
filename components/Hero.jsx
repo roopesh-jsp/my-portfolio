@@ -11,13 +11,13 @@ import HeroImage from "./HeroImage";
 // bg gradient -> bg-gradient-to-b from-[#0f0f1a] to-[#1a1a2e]
 function Hero() {
   return (
-    <section className="relative flex flex-col lg:flex-row items-center gap-10 justify-between px-6 md:px-16 py-16  text-white">
+    <section className="relative flex flex-col lg:flex-row mb-10 items-center gap-10 justify-between px-6 md:px-16 py-16  text-white">
       {/* Left Content */}
-      <div className="max-w-xl space-y-6">
-        <h1 className="text-4xl md:text-6xl font-bold leading-tight">
+      <div className="max-w-xl space-y-6 mb-[100px] lg:mb-0">
+        <h1 className="text-4xl md:text-6xl font-bold">
           Turning Ideas into <span className="text-indigo-400">Code</span>
         </h1>
-        <p className="text-gray-300 text-lg leading-relaxed">
+        <p className="text-gray-300 text-lg w-full leading-relaxed">
           Hi, I am <span className="font-semibold">Roopesh</span> — a Fullstack
           developer who loves building real-world projects with the MERN stack,
           Next.js, exploring AI, and creating impactful digital experiences.
@@ -31,28 +31,26 @@ function Hero() {
       <div className="relative lg:mt-12 md:mt-0 w-[70%]  lg:w-[45%] mt-20">
         {/* Profile Image */}
         <HeroImage />
-        <PinkOrangeGradientBg />
-
         {/* Decorative Shapes */}
         <Image
           src={zigzag}
           alt="circles"
-          className="absolute top-[-20px] left-[-40px] w-19 opacity-80"
+          className="absolute top-[-20%] left-[-20%] w-10 md:w-19 lg:left-0 opacity-80"
         />
         <Image
           src={circles}
           alt="triangles"
-          className="absolute top-0 right-0 w-10 opacity-80"
+          className="absolute top-[-20%] right-[-20%] lg:right-[-40px] w-10 opacity-80"
         />
         <Image
           src={triangles}
           alt="zigzag"
-          className="absolute bottom-[-50px] left-[20px] w-14 opacity-80"
+          className="absolute bottom-[-30%] left-[-20%] lg:left-3 w-14 opacity-80"
         />
         <Image
           src={plus}
           alt="plus"
-          className="absolute bottom-[-30px] rotate-2 right-[-30px] w-16 opacity-80"
+          className="absolute bottom-[-20%] rotate-2 right-[-20%] md:w-14 lg:right-[0px] w-10 opacity-80"
         />
       </div>
     </section>
