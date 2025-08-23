@@ -28,7 +28,7 @@ export default function Talents() {
             <div
               className={`w-12 h-12 mx-auto mb-4 rounded-full flex bg-opacity-10Pl items-center justify-center ${talent.color}`}
             >
-              <Image src={talent.icon} width={35} height={35} />
+              <Image src={talent.icon} width={35} height={35} className="w-8" />
             </div>
 
             <h3 className={`text-xl font-semibold mb-2  ${nunito.className}`}>

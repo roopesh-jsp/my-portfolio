@@ -2,6 +2,7 @@ import NavBar from "@/components/NavBar";
 import "./globals.css";
 import { Poppins, Fira_Code } from "next/font/google";
 import { bg } from "@/data/constants";
+import Footer from "@/components/Fotter";
 
 const poppins = Poppins({
   variable: "--font-poppins",
@@ -28,6 +29,7 @@ export default function RootLayout({ children }) {
         <main className="w-full">
           <NavBar />
           {children}
+          <Footer />
         </main>
       </body>
     </html>
