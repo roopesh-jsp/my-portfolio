@@ -11,7 +11,7 @@ import HeroImage from "./HeroImage";
 // bg gradient -> bg-gradient-to-b from-[#0f0f1a] to-[#1a1a2e]
 function Hero() {
   return (
-    <section className="relative flex flex-col lg:flex-row mb-10 items-center gap-10 justify-between px-6 md:px-16 py-16  text-white">
+    <section className="relative flex flex-col lg:flex-row mb-10 items-center gap-10 justify-between px-6 md:px-16 py-16  text-white ">
       {/* Left Content */}
       <div className="max-w-xl space-y-6 mb-[100px] lg:mb-0">
         <h1 className="text-4xl md:text-6xl font-bold">
@@ -27,8 +27,7 @@ function Hero() {
         </button>
       </div>
 
-      {/* Right Content */}
-      <div className="relative lg:mt-12 md:mt-0 w-[70%]  lg:w-[45%] mt-20">
+      <div className="relative lg:mt-12 md:mt-0 w-[70%]  lg:w-[45%] mt-20 ">
         {/* Profile Image */}
         <HeroImage />
         {/* Decorative Shapes */}

@@ -2,8 +2,6 @@ import NavBar from "@/components/NavBar";
 import "./globals.css";
 import { Poppins, Fira_Code } from "next/font/google";
 import { bg } from "@/data/constants";
-import GradientBackground from "@/components/GradientBox";
-import PinkOrangeGradientBg from "@/components/PinkOrangeGrad";
 
 const poppins = Poppins({
   variable: "--font-poppins",
@@ -25,7 +23,7 @@ export default function RootLayout({ children }) {
   return (
     <html lang="en">
       <body
-        className={`${poppins.variable} ${firaCode.variable} antialiased bg-[#19191B] text-white  `}
+        className={`${poppins.variable} ${firaCode.variable} antialiased bg-[#19191B] text-white overflow-x-hidden  `}
       >
         <main className="w-full">
           <NavBar />

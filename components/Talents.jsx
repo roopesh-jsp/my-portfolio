@@ -1,12 +1,16 @@
 import { talents } from "@/data/data";
 import Image from "next/image";
 import GradientBackground from "./GradientBox";
-
 import circles from "@/assests/circles.png";
 import triangles from "@/assests/triangles.png";
 import zigzag from "@/assests/zigzag.png";
 import plus from "@/assests/plus.png";
+import { Nunito_Sans } from "next/font/google";
 
+const nunito = Nunito_Sans({
+  subsets: ["latin"],
+  weight: ["400", "600", "700"], // pick the weights you need
+});
 export default function Talents() {
   return (
     <section className=" relative py-16 text-center text-white">
@@ -27,8 +31,12 @@ export default function Talents() {
               <Image src={talent.icon} width={35} height={35} />
             </div>
 
-            <h3 className="text-xl font-semibold mb-2">{talent.title}</h3>
-            <p className="text-gray-200 text-sm font-light leading-relaxed">
+            <h3 className={`text-xl font-semibold mb-2  ${nunito.className}`}>
+              {talent.title}
+            </h3>
+            <p
+              className={`text-gray-400 text-md font-extralight ${nunito.className}`}
+            >
               {talent.text}
             </p>
           </div>

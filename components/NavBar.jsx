@@ -5,8 +5,11 @@ import Link from "next/link";
 import React, { useEffect, useState } from "react";
 import { Menu, X } from "lucide-react";
 import { motion, AnimatePresence } from "framer-motion";
-import { usePathname } from "next/navigation"; // For active link (Next.js 13+)
-import GradientBackground from "./GradientBox";
+import { usePathname } from "next/navigation";
+
+import { Playwrite_ZA } from "next/font/google";
+
+const playwrite = Playwrite_ZA({ subsets: ["latin"] });
 
 function NavBar() {
   const [menuOpen, setMenuOpen] = useState(false);
@@ -19,7 +22,7 @@ function NavBar() {
       const scrollTop = window.scrollY || document.documentElement.scrollTop;
 
       // 👉 true if scrolled at least 1 full viewport
-      if (scrollTop >= 150) {
+      if (scrollTop >= 50) {
         console.log("scrolled");
 
         setIsScrolled(true);
@@ -41,10 +44,10 @@ function NavBar() {
     <div
       className={`flex ${
         isScrolled ? "bg-[rgba(25,25,27,0.95)] " : ""
-      } items-center justify-between px-8 py-4 w-[100vw] sticky top-0  z-20`}
+      } items-center justify-between lg:px-12 px-6 py-4 w-[100vw] sticky top-0  transition-colors duration-300 ease-in-out    z-20`}
     >
       {/* <GradientBackground /> */}
-      <h1 className="text-lg font-semibold tracking-tight">Enver</h1>
+      <h1 className={`${playwrite.className} text-xl text-stone-50`}>RJ</h1>
 
       {/* Desktop Nav */}
       <div className="flex gap-10 items-center w-[60%] justify-between">
