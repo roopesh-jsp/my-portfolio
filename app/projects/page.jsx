@@ -1,7 +1,12 @@
+import ProjectTimeline from "@/components/ProjectTimeLine";
 import React from "react";
 
 function ProjectsPg() {
-  return <div>ProjectsPg</div>;
+  return (
+    <div>
+      <ProjectTimeline />
+    </div>
+  );
 }
 
 export default ProjectsPg;

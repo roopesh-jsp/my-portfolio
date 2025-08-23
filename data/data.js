@@ -4,6 +4,7 @@ import db from "@/assests/db.png";
 import ai from "@/assests/ai.png";
 import tree from "@/assests/tree.png";
 import layers from "@/assests/layers.png";
+import p1 from "@/assests/p1.jpg";
 
 export const talents = [
   {
@@ -49,5 +50,43 @@ export const talents = [
 
     title: "Databases",
     text: "Proficient in working with both SQL and NoSQL databases such as MySQL and MongoDB.",
+  },
+];
+
+export const projectsData = [
+  {
+    date: "Jul 2025",
+    title: "E-Commerce Platform",
+    company: "Personal Project",
+    description:
+      "Built a full-stack MERN e-commerce platform with Razorpay integration for secure payments and an admin dashboard for order management.",
+    img: p1, // Replace with project image
+    sourceCode: "https://github.com/yourusername/ecommerce",
+    liveDemo: "https://ecommerce-demo.vercel.app",
+    techStack: ["React", "Node.js", "MongoDB", "Razorpay"],
+  },
+  {
+    date: "Jun 2025",
+    title: "Hiring Automation Chrome Extension",
+    company: "Internship Project",
+    description:
+      "Developed a Chrome extension automating LinkedIn hiring flows by integrating with InterviewGod APIs.",
+    img: p1,
+  },
+  {
+    date: "May 2025",
+    title: "AI Chatbot with LangChain",
+    company: "AI/ML Project",
+    description:
+      "Created an AI-powered chatbot using LangChain, Hugging Face, and FastAPI to handle natural conversations and knowledge queries.",
+    img: p1,
+  },
+  {
+    date: "Apr 2025",
+    title: "Scrollable Banner System",
+    company: "Full-Stack Project",
+    description:
+      "Implemented a banner upload and display system where admins can add images to backend storage, served as static files in UI.",
+    img: p1,
   },
 ];
