@@ -9,6 +9,8 @@ import p2 from "@/assests/p2.png";
 import p3 from "@/assests/p3.png";
 import p4 from "@/assests/p4.png";
 import p5 from "@/assests/p5.png";
+import p6 from "@/assests/p6.png";
+import p7 from "@/assests/p7.png";
 
 export const talents = [
   {
@@ -59,26 +61,31 @@ export const talents = [
 
 export const projectsData = [
   {
-    date: "May 2025",
-    title: "AI Chatbot with LangChain",
-    company: "AI/ML Project",
+    date: "Jul 2025",
+    title: "short-notes maker",
+    company: "Hugging Face",
     description:
-      "Created an AI-powered chatbot using LangChain, Hugging Face, and FastAPI to handle natural conversations and knowledge queries.",
-    img: p1,
+      "Developed an AI-powered notes generator using Streamlit, LangChain, and Hugging Face. Designed for students, it creates concise, structured, and multilingual notes on any topic. Implemented dynamic prompt engineering with user-controlled tone, format, number of points, and language to ensure personalized and high-quality outputs.",
+
+    img: p6,
+    sourceCode: "https://github.com/yourusername/ecommerce",
+    liveDemo: "https://ecommerce-demo.vercel.app",
+    techStack: ["Fast APi", "Hugging face", "Streamlit"],
   },
   {
-    date: "Jul 2025",
+    date: "Jun 2025",
     title: "E-Commerce Platform",
-    company: "Personal Project",
+    company: "Freelance Project",
     description:
-      "Built a full-stack MERN e-commerce platform with Razorpay integration for secure payments and an admin dashboard for order management.",
-    img: p1, // Replace with project image
+      "A freelance B2B project built with the MERN stack featuring OTP-based login via MSG91 and Razorpay payment integration. The system allows image uploads to a local file system, as most content is static. Includes an auto-scrolling banners feature on the homepage and a full admin panel with CRUD functionality for products and banners. Also implemented a coupon management system with two discount types: flat amount and percentage-based discounts.",
+
+    img: p7, // Replace with project image
     sourceCode: "https://github.com/yourusername/ecommerce",
     liveDemo: "https://ecommerce-demo.vercel.app",
     techStack: ["React", "Node.js", "MongoDB", "Razorpay"],
   },
   {
-    date: "Jul 2025",
+    date: "May 2025",
     title: "Doctor Appointment",
     company: "MERN project",
     description:
@@ -100,7 +107,7 @@ export const projectsData = [
     img: p2,
   },
   {
-    date: "Jul 2025",
+    date: "Dec 2024",
     title: "Quiz App",
     company: "Personal Project",
     description:

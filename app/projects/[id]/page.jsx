@@ -41,13 +41,13 @@ export const ProjectPage = () => {
         initial={{ opacity: 0, y: -30 }}
         animate={{ opacity: 1, y: 0 }}
         transition={{ duration: 0.5 }}
-        className="text-3xl md:text-5xl font-extrabold tracking-wider mb-6 text-[#5454D4]"
+        className="text-2xl md:text-5xl font-extrabold tracking-wider mb-6 text-[#5454D4]"
       >
         {project.title}
       </motion.h1>
 
       {/* Date + Company */}
-      <p className="text-md text-gray-300 mb-5">
+      <p className="text-md md:text-lg text-gray-300 mb-5">
         <span className="text-[#5454D4] font-semibold">{project.date}</span> ·{" "}
         {project.company}
       </p>
@@ -77,7 +77,7 @@ export const ProjectPage = () => {
       {project.techStack && (
         <div className="mb-6">
           <h3 className="text-xl font-bold mb-3 text-center">Tech Stack</h3>
-          <div className="flex flex-wrap gap-3">
+          <div className="flex flex-wrap gap-3 items-center justify-center">
             {project.techStack.map((tech, i) => (
               <span
                 key={i}
@@ -91,13 +91,13 @@ export const ProjectPage = () => {
       )}
 
       {/* Links */}
-      <div className="flex gap-6 mt-8">
+      <div className="flex flex-col md:flex-row gap-6 mt-8 ">
         {project.sourceCode && (
           <a
             href={project.sourceCode}
             target="_blank"
             rel="noopener noreferrer"
-            className="px-4 py-2 bg-[#5454D4] hover:bg-[#3f3fa8] rounded-lg text-white font-semibold transition cursor-pointer"
+            className="px-4 py-2 bg-[#5454D4] hover:bg-[#3f3fa8] rounded-lg text-white font-semibold transition cursor-pointer text-center"
           >
             Source Code
           </a>
@@ -107,7 +107,7 @@ export const ProjectPage = () => {
             href={project.liveDemo}
             target="_blank"
             rel="noopener noreferrer"
-            className="px-4 py-2 bg-white text-black hover:bg-gray-200 rounded-lg font-semibold transition cursor-pointer"
+            className="px-4 py-2 bg-white text-black hover:bg-gray-200 rounded-lg font-semibold transition cursor-pointer text-center"
           >
             Live Demo
           </a>

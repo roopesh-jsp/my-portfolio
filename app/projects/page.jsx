@@ -1,10 +1,11 @@
 import ProjectTimeline from "@/components/ProjectTimeLine";
 import React from "react";
+import { projectsData } from "@/data/data";
 
 function ProjectsPg() {
   return (
     <div>
-      <ProjectTimeline />
+      <ProjectTimeline projectsData={projectsData} />
     </div>
   );
 }

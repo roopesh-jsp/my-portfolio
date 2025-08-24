@@ -3,36 +3,33 @@ import React, { useState } from "react";
 import { motion } from "framer-motion";
 import Image from "next/image";
 import Link from "next/link";
-import { projectsData } from "@/data/data";
 import { Nunito_Sans } from "next/font/google";
 import { MdAdsClick } from "react-icons/md";
 
 const nunito = Nunito_Sans({
   subsets: ["latin"],
-  weight: ["400", "600", "700"], // pick the weights you need
+  weight: ["400", "600", "700"],
 });
 
-const ProjectTimeline = () => {
+const ProjectTimeline = ({ projectsData, isHome }) => {
   return (
     <div
-      className={`w-full flex flex-col items-center py-10 ${nunito.className}`}
+      className={`w-full flex flex-col px-5 items-center py-10 ${nunito.className}`}
     >
       <h2 className="text-3xl md:text-5xl font-extrabold mb-16 text-white tracking-wide">
         <span className="text-indigo-400">Project</span> Timeline
       </h2>
 
       <div className="relative w-full max-w-5xl mx-auto">
-        {/* Vertical line */}
+        {/* Vertical line (always spans full container height, including button) */}
         <div className="absolute left-1/2 transform -translate-x-1/2 top-0 w-1 h-full opacity-50 bg-[#5454D4]" />
 
         <div className="flex flex-col space-y-16">
           {projectsData.map((item, index) => {
             const isLeft = index % 2 === 0;
 
-            // Local state per card
             const [rotate, setRotate] = useState({ x: 0, y: 0 });
 
-            // Handle mouse movement for 3D tilt
             const handleMouseMove = (e) => {
               const card = e.currentTarget.getBoundingClientRect();
               const x = e.clientX - card.left;
@@ -40,7 +37,6 @@ const ProjectTimeline = () => {
               const centerX = card.width / 2;
               const centerY = card.height / 2;
 
-              // Flip rotateX so top tilts inward, bottom tilts outward
               const rotateX = -((y - centerY) / centerY) * 10;
               const rotateY = ((x - centerX) / centerX) * 10;
 
@@ -72,7 +68,7 @@ const ProjectTimeline = () => {
                     animate={{
                       rotateX: rotate.x,
                       rotateY: rotate.y,
-                      scale: 1.05, // slight zoom on hover
+                      scale: 1.05,
                     }}
                     transition={{ type: "spring", stiffness: 200, damping: 15 }}
                     onMouseMove={handleMouseMove}
@@ -84,6 +80,7 @@ const ProjectTimeline = () => {
                     <div className="absolute bottom-3 right-4 text-xs flex gap-1 items-center opacity-50">
                       <MdAdsClick /> <span>Click</span>
                     </div>
+
                     {/* Image */}
                     <div className="w-full h-48 bg-gray-800 ">
                       <Image
@@ -113,6 +110,22 @@ const ProjectTimeline = () => {
               </motion.div>
             );
           })}
+
+          {/* Show more button only on Home */}
+          {isHome && (
+            <div className="relative flex flex-col items-center justify-between h-[80px]">
+              {/* Dotted vertical continuation */}
+              <div className="absolute top-0 left-1/2 -translate-x-1/2 w-1 h-1/2  border-l-4 border-dotted border-stone-50" />
+              <div></div>
+              <Link
+                href="/projects"
+                className="relative z-10 bg-[#5454D4] rounded-md h-fit  text-md font-semibold px-6 py-2 
+      capitalize cursor-pointer hover:bg-[#3333a7]"
+              >
+                Show more
+              </Link>
+            </div>
+          )}
         </div>
       </div>
     </div>

@@ -47,7 +47,9 @@ function NavBar() {
       } items-center justify-between lg:px-12 px-6 py-4 w-[100vw] sticky top-0  transition-colors duration-300 ease-in-out    z-20`}
     >
       {/* <GradientBackground /> */}
-      <h1 className={`${playwrite.className} text-xl text-stone-50`}>RJ</h1>
+      <h1 className={`${playwrite.className} text-xl text-stone-50`}>
+        <Link href={"/"}>RJ</Link>
+      </h1>
 
       {/* Desktop Nav */}
       <div className="flex gap-10 items-center w-[60%] justify-between">
@@ -77,7 +79,7 @@ function NavBar() {
         </nav>
         {/* Contact Us Button */}
         <Link
-          href="/contact"
+          href="/ai"
           className="ml-6 hidden md:flex px-6 py-2 text-sm rounded border border-solid border-white/40 font-normal transition-colors hover:bg-[var(--secondary)] hover:text-white"
           style={{
             color: "inherit",
@@ -137,7 +139,7 @@ function NavBar() {
               </Link>
             ))}
             <Link
-              href="/contact"
+              href="/ai"
               className="mt-10 text-center px-6 py-2 rounded border border-solid border-[#ccc] text-sm font-normal transition-colors hover:bg-[var(--secondary)] hover:text-white"
               style={{
                 color: "inherit",
