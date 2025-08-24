@@ -5,6 +5,7 @@ import Image from "next/image";
 import Link from "next/link";
 import { projectsData } from "@/data/data";
 import { Nunito_Sans } from "next/font/google";
+import { MdAdsClick } from "react-icons/md";
 
 const nunito = Nunito_Sans({
   subsets: ["latin"],
@@ -62,7 +63,7 @@ const ProjectTimeline = () => {
                 <div className="absolute left-1/2 transform -translate-x-1/2 w-6 h-6 rounded-full bg-stone-300 border-4 border-[#5454D4]" />
 
                 {/* Card */}
-                <Link href={`/projects/${index}`} className="w-full sm:w-5/12">
+                <Link href={`/projects/${index}`} className="w-full sm:w-5/12 ">
                   <motion.div
                     style={{
                       transformStyle: "preserve-3d",
@@ -76,12 +77,15 @@ const ProjectTimeline = () => {
                     transition={{ type: "spring", stiffness: 200, damping: 15 }}
                     onMouseMove={handleMouseMove}
                     onMouseLeave={resetTilt}
-                    className={`w-full bg-[#19191B]/50 backdrop-blur-2xl rounded-lg shadow-md/40 shadow-[#5454D4] overflow-hidden cursor-pointer ${
+                    className={`w-full bg-[#19191B]/50 relative backdrop-blur-2xl rounded-lg pb-5 shadow-md/40 shadow-[#5454D4] overflow-hidden cursor-pointer ${
                       isLeft ? "mr-auto" : "ml-auto"
                     }`}
                   >
+                    <div className="absolute bottom-3 right-4 text-xs flex gap-1 items-center opacity-50">
+                      <MdAdsClick /> <span>Click</span>
+                    </div>
                     {/* Image */}
-                    <div className="w-full h-48 bg-gray-800">
+                    <div className="w-full h-48 bg-gray-800 ">
                       <Image
                         src={item.img}
                         alt={item.title}
@@ -92,13 +96,15 @@ const ProjectTimeline = () => {
                     </div>
 
                     {/* Content */}
-                    <div className="p-5 text-white">
+                    <div className="p-5 text-white relative ">
                       <p className="text-sm text-[#5454D4] font-semibold">
                         {item.date}
                       </p>
-                      <h3 className="text-xl font-bold">{item.title}</h3>
+                      <h3 className="text-xl font-bold line-clamp-1z">
+                        {item.title}
+                      </h3>
                       <p className="text-md font-semibold">{item.company}</p>
-                      <p className="text-sm mt-2 opacity-80">
+                      <p className="text-sm mt-2 opacity-80 line-clamp-3">
                         {item.description}
                       </p>
                     </div>

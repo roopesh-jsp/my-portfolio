@@ -5,6 +5,9 @@ import { projectsData } from "@/data/data";
 import Image from "next/image";
 import { Nunito_Sans } from "next/font/google";
 import { motion } from "framer-motion";
+import Link from "next/link";
+import { ArrowLeftSquare } from "lucide-react";
+import { MdKeyboardDoubleArrowLeft } from "react-icons/md";
 
 const nunito = Nunito_Sans({
   subsets: ["latin"],
@@ -25,8 +28,14 @@ export const ProjectPage = () => {
 
   return (
     <div
-      className={`${nunito.className} w-full min-h-screen flex flex-col items-center text-white px-5 md:px-20 py-10`}
+      className={`${nunito.className} relative w-full min-h-screen flex flex-col items-center text-white px-5 md:px-20 py-10`}
     >
+      <Link
+        href={"/projects"}
+        className="text-[#5454D4] hidden  font-medium text-md fixed top-[90px] left-10 md:flex gap-2 items-center"
+      >
+        <MdKeyboardDoubleArrowLeft /> back
+      </Link>
       {/* Title */}
       <motion.h1
         initial={{ opacity: 0, y: -30 }}
@@ -67,12 +76,12 @@ export const ProjectPage = () => {
       {/* Tech Stack */}
       {project.techStack && (
         <div className="mb-6">
-          <h3 className="text-xl font-bold mb-3">Tech Stack:</h3>
+          <h3 className="text-xl font-bold mb-3 text-center">Tech Stack</h3>
           <div className="flex flex-wrap gap-3">
             {project.techStack.map((tech, i) => (
               <span
                 key={i}
-                className="px-4 py-2 bg-[#19191B]/60 backdrop-blur-md border border-[#5454D4] rounded-lg text-sm"
+                className="px-4 py-1 bg-black/50 backdrop-blur-md border-2 border-[#5454D4] rounded-md text-sm"
               >
                 {tech}
               </span>
@@ -88,7 +97,7 @@ export const ProjectPage = () => {
             href={project.sourceCode}
             target="_blank"
             rel="noopener noreferrer"
-            className="px-6 py-3 bg-[#5454D4] hover:bg-[#3f3fa8] rounded-lg text-white font-semibold transition"
+            className="px-4 py-2 bg-[#5454D4] hover:bg-[#3f3fa8] rounded-lg text-white font-semibold transition cursor-pointer"
           >
             Source Code
           </a>
@@ -98,7 +107,7 @@ export const ProjectPage = () => {
             href={project.liveDemo}
             target="_blank"
             rel="noopener noreferrer"
-            className="px-6 py-3 bg-white text-black hover:bg-gray-200 rounded-lg font-semibold transition"
+            className="px-4 py-2 bg-white text-black hover:bg-gray-200 rounded-lg font-semibold transition cursor-pointer"
           >
             Live Demo
           </a>
