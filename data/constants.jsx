@@ -1,5 +1,6 @@
 import { Home, Contact, File, Mail } from "lucide-react";
-import { FaEnvelope, FaGithub, FaLinkedin, FaTwitter } from "react-icons/fa";
+import { FaEnvelope, FaGithub, FaLinkedin, FaWhatsapp } from "react-icons/fa";
+import { SiLeetcode } from "react-icons/si";
 export const bg = "#19191B";
 export const secondary = "#5454D4";
 
@@ -29,9 +30,19 @@ export const socialLinks = [
     icon: <FaGithub />,
   },
   {
+    name: "Leetcode",
+    href: "https://leetcode.com/u/roopeshrj",
+    icon: <SiLeetcode />,
+  },
+  {
     name: "LinkedIn",
-    href: "https://www.linkedin.com/in/rupesh13/",
+    href: "https://linkedin.com/in/rupesh13",
     icon: <FaLinkedin />,
+  },
+  {
+    name: "WhatsApp",
+    href: "https://wa.me/917036311198",
+    icons: <FaWhatsapp />,
   },
   { name: "Mail", href: "mailto:rupzkumar5@gmail.com", icon: <FaEnvelope /> },
 ];

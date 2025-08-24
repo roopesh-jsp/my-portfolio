@@ -7,6 +7,8 @@ import zigzag from "@/assests/zigzag.png";
 import plus from "@/assests/plus.png";
 import PinkOrangeGradientBg from "./PinkOrangeGrad";
 import HeroImage from "./HeroImage";
+import Link from "next/link";
+import { socialLinks } from "@/data/constants";
 
 // bg gradient -> bg-gradient-to-b from-[#0f0f1a] to-[#1a1a2e]
 function Hero() {
@@ -18,13 +20,39 @@ function Hero() {
           Turning Ideas into <span className="text-indigo-400">Code</span>
         </h1>
         <p className="text-gray-300 text-lg w-full leading-relaxed">
-          Hi, I am <span className="font-semibold">Roopesh</span> — a Fullstack
-          developer who loves building real-world projects with the MERN stack,
-          Next.js, exploring AI, and creating impactful digital experiences.
+          Hi, I am{" "}
+          <span className="font-bold text-indigo-400">
+            Roopesh Kumar Jonnakuti
+          </span>{" "}
+          — a Fullstack developer who loves building real-world projects with
+          the MERN stack, Next.js, exploring AI, and creating impactful digital
+          experiences.
         </p>
-        <button className="mt-2 lg:mt-6 px-6 py-3 bg-indigo-500 hover:bg-indigo-600 transition rounded-lg font-medium shadow-lg">
-          My Projects
-        </button>
+        <div className="flex flex-col w-fit  gap-5">
+          <div className="flex gap-5 items-center">
+            <button className="mt-2 lg:mt-6 px-6 py-3 cursor-pointer bg-indigo-500 hover:bg-indigo-600 transition rounded-lg font-medium shadow-lg">
+              <Link href={"/projects"}>My Projects</Link>
+            </button>
+            <button className="mt-2 lg:mt-6 px-6 py-3 cursor-pointer bg-stone-100 hover:bg-stone-300 text-black transition rounded-lg font-medium shadow-lg">
+              <a href="/resume.pdf" target="_blank" rel="noopener noreferrer">
+                Resume
+              </a>
+            </button>
+          </div>
+          <div className="flex gap-5 text-xl ml-1 ">
+            {socialLinks.slice(0, 3).map((social) => (
+              <Link
+                key={social.name}
+                href={social.href}
+                target="_blank"
+                rel="noopener noreferrer"
+                className="hover:text-white text-stone-300 transition-colors"
+              >
+                {social.icon}
+              </Link>
+            ))}
+          </div>
+        </div>
       </div>
 
       <div className="relative lg:mt-12 md:mt-0 w-[70%]  lg:w-[45%] mt-20 ">
