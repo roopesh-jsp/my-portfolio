@@ -1,4 +1,4 @@
-import { Home, Contact, File, Mail } from "lucide-react";
+import { Home, Contact, File, Mail, Computer } from "lucide-react";
 import { FaEnvelope, FaGithub, FaLinkedin, FaWhatsapp } from "react-icons/fa";
 import { SiLeetcode } from "react-icons/si";
 export const bg = "#19191B";
@@ -20,6 +20,11 @@ export const navLinks = [
     label: "Projects",
     link: "/projects",
     icon: File,
+  },
+  {
+    label: "Experience",
+    link: "/experience",
+    icon: Computer,
   },
 ];
 

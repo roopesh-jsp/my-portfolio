@@ -68,8 +68,9 @@ export const projectsData = [
       "Developed an AI-powered notes generator using Streamlit, LangChain, and Hugging Face. Designed for students, it creates concise, structured, and multilingual notes on any topic. Implemented dynamic prompt engineering with user-controlled tone, format, number of points, and language to ensure personalized and high-quality outputs.",
 
     img: p6,
-    sourceCode: "https://github.com/yourusername/ecommerce",
-    liveDemo: "https://ecommerce-demo.vercel.app",
+    sourceCode:
+      "https://github.com/roopesh-jsp/Ai-chatbot/tree/main/short-notes%20maker",
+    // liveDemo: "https://ecommerce-demo.vercel.app",
     techStack: ["Fast APi", "Hugging face", "Streamlit"],
   },
   {
@@ -79,9 +80,9 @@ export const projectsData = [
     description:
       "A freelance B2B project built with the MERN stack featuring OTP-based login via MSG91 and Razorpay payment integration. The system allows image uploads to a local file system, as most content is static. Includes an auto-scrolling banners feature on the homepage and a full admin panel with CRUD functionality for products and banners. Also implemented a coupon management system with two discount types: flat amount and percentage-based discounts.",
 
-    img: p7, // Replace with project image
-    sourceCode: "https://github.com/yourusername/ecommerce",
-    liveDemo: "https://ecommerce-demo.vercel.app",
+    img: p7,
+    sourceCode: "https://github.com/Vardhan-IMMIDI/chipdeal",
+    // liveDemo: "https://ecommerce-demo.vercel.app",
     techStack: ["React", "Node.js", "MongoDB", "Razorpay"],
   },
   {
@@ -90,9 +91,9 @@ export const projectsData = [
     company: "MERN project",
     description:
       "A doctor appointment booking application with three interfaces: users, doctors, and admin. Users can book and cancel appointments, while doctors can view and manage their scheduled appointments. The admin interface allows for adding or removing doctors and making them available for bookings. Users receive email notifications regarding their bookings, and missed appointment alerts are sent if they fail to attend.",
-    img: p5, // Replace with project image
-    sourceCode: "https://github.com/yourusername/ecommerce",
-    liveDemo: "https://ecommerce-demo.vercel.app",
+    img: p5,
+    sourceCode: "https://github.com/roopesh-jsp/doctor-appointment-node-js-",
+    // liveDemo: "https://ecommerce-demo.vercel.app",
     techStack: ["React", "Node.js", "MongoDB", "Node Mailer", "Corn Jobs"],
   },
   {
@@ -112,9 +113,10 @@ export const projectsData = [
     company: "Personal Project",
     description:
       "An interactive quiz application built with React and powered by an external API for dynamic question generation. The app features a scoring system where users earn +1 for each correct answer, lose -1 for incorrect answers, and receive 0 for unattempted questions. It includes a clean home screen, a modal confirmation for quiz submission, and a detailed results page highlighting correct and wrong answers. The UI is designed to provide immediate feedback and enhance the learning experience. This project demonstrates strong skills in React state management, conditional rendering, and user interaction handling.",
-    img: p4, // Replace with project image
-    sourceCode: "https://github.com/yourusername/ecommerce",
-    liveDemo: "https://ecommerce-demo.vercel.app",
+    img: p4,
+    sourceCode:
+      "https://github.com/roopesh-jsp/reactApps/tree/main/Quiz%20testline%20assignment",
+    // liveDemo: "https://ecommerce-demo.vercel.app",
     techStack: ["React"],
   },
   {
@@ -123,8 +125,8 @@ export const projectsData = [
     company: "React Project",
     description:
       "A technical event registration platform built with ReactJS for Strides 2k25. The application was used by 4,000+ students to seamlessly register for multiple events, significantly reducing manual paperwork by 75% and improving the overall registration experience. The system provided a simple, responsive, and scalable solution for handling large-scale signups efficiently.",
-    sourceCode: "https://github.com/roopesh-jsp/Food-order-full-stack-website",
-    liveDemo: "https://food-order-app-3pw0.onrender.com/",
+    sourceCode: "https://github.com/roopesh-jsp/strides2k25",
+    liveDemo: "https://eartifact.vercel.app/",
     techStack: ["React"],
     img: p3,
   },

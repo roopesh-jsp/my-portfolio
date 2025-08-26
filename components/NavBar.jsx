@@ -6,8 +6,8 @@ import React, { useEffect, useState } from "react";
 import { Menu, X } from "lucide-react";
 import { motion, AnimatePresence } from "framer-motion";
 import { usePathname } from "next/navigation";
-
 import { Playwrite_ZA } from "next/font/google";
+import { RiGeminiFill } from "react-icons/ri";
 
 const playwrite = Playwrite_ZA({ subsets: ["latin"] });
 
@@ -80,7 +80,7 @@ function NavBar() {
         {/* Contact Us Button */}
         <Link
           href="/ai"
-          className="ml-6 hidden md:flex px-6 py-2 text-sm rounded border border-solid border-white/40 font-normal transition-colors hover:bg-[var(--secondary)] hover:text-white"
+          className="ml-6 hidden md:flex md:items-center md:gap-2 px-6 py-2 text-sm rounded border border-solid border-white/40 font-normal transition-colors hover:bg-[var(--secondary)] hover:text-white"
           style={{
             color: "inherit",
             borderColor: "#ffffff66",
@@ -88,7 +88,7 @@ function NavBar() {
           onMouseEnter={(e) => (e.target.style.background = secondary)}
           onMouseLeave={(e) => (e.target.style.background = "")}
         >
-          Chat Ai ✨
+          <span>Chat AI</span> <RiGeminiFill />
         </Link>
       </div>
 
@@ -140,7 +140,7 @@ function NavBar() {
             ))}
             <Link
               href="/ai"
-              className="mt-10 text-center px-6 py-2 rounded border border-solid border-[#ccc] text-sm font-normal transition-colors hover:bg-[var(--secondary)] hover:text-white"
+              className="mt-10 text-center px-6 py-2 flex items-center gap-2 rounded border border-solid border-[#ccc] text-sm font-normal transition-colors hover:bg-[var(--secondary)] hover:text-white"
               style={{
                 color: "inherit",
                 borderColor: "#ccc",
@@ -149,7 +149,7 @@ function NavBar() {
               onMouseLeave={(e) => (e.target.style.background = "")}
               onClick={() => setMenuOpen(false)}
             >
-              Chat Ai ✨
+              <span>Chat AI</span> <RiGeminiFill />
             </Link>
           </motion.nav>
         )}
