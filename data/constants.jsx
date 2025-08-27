@@ -1,5 +1,6 @@
 import { Home, Contact, File, Mail, Computer } from "lucide-react";
-import { FaEnvelope, FaGithub, FaLinkedin, FaWhatsapp } from "react-icons/fa";
+import { FaEnvelope, FaGithub, FaLinkedin } from "react-icons/fa";
+import { PiWhatsappLogoDuotone } from "react-icons/pi";
 import { SiLeetcode } from "react-icons/si";
 export const bg = "#19191B";
 export const secondary = "#5454D4";
@@ -11,11 +12,7 @@ export const navLinks = [
     link: "/",
     icon: Home,
   },
-  {
-    label: "Contact",
-    link: "/contact",
-    icon: Contact,
-  },
+
   {
     label: "Projects",
     link: "/projects",
@@ -25,6 +22,11 @@ export const navLinks = [
     label: "Experience",
     link: "/experience",
     icon: Computer,
+  },
+  {
+    label: "Contact",
+    link: "/contact",
+    icon: Contact,
   },
 ];
 
@@ -44,10 +46,11 @@ export const socialLinks = [
     href: "https://linkedin.com/in/rupesh13",
     icon: <FaLinkedin />,
   },
+
+  { name: "Mail", href: "mailto:rupzkumar5@gmail.com", icon: <FaEnvelope /> },
   {
     name: "WhatsApp",
     href: "https://wa.me/917036311198",
-    icons: <FaWhatsapp />,
+    icons: <PiWhatsappLogoDuotone />,
   },
-  { name: "Mail", href: "mailto:rupzkumar5@gmail.com", icon: <FaEnvelope /> },
 ];
