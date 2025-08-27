@@ -1,5 +1,4 @@
 "use client";
-
 import React, { useState } from "react";
 import { motion } from "framer-motion";
 import { Send } from "lucide-react";
@@ -11,6 +10,7 @@ function ContactPg() {
     email: "",
     message: "",
   });
+
   const handleChange = (e) => {
     setFormData({
       ...formData,
@@ -21,19 +21,17 @@ function ContactPg() {
   const handleSubmit = (e) => {
     e.preventDefault();
     console.log("Form Data Submitted:", formData);
-
-    // reset form (optional)
     setFormData({ name: "", email: "", message: "" });
   };
 
   return (
-    <div className="bg-transparent text-white min-h-screen flex flex-col items-center justify-center px-6 py-12">
+    <div className="bg-transparent text-white min-h-screen flex flex-col items-center justify-center px-4 sm:px-6 py-12">
       {/* Heading */}
       <motion.h1
         initial={{ opacity: 0, y: -30 }}
         animate={{ opacity: 1, y: 0 }}
         transition={{ duration: 0.6 }}
-        className="text-4xl font-bold mb-3"
+        className="text-3xl sm:text-4xl font-bold mb-3 text-center"
       >
         Get In <span className="text-[#5454D4]">Touch</span>
       </motion.h1>
@@ -42,20 +40,20 @@ function ContactPg() {
         initial={{ opacity: 0 }}
         animate={{ opacity: 1 }}
         transition={{ delay: 0.3, duration: 0.6 }}
-        className="text-lg text-gray-300 mb-8 text-center max-w-xl"
+        className="text-base sm:text-lg text-gray-300 mb-8 text-center max-w-xl px-2"
       >
         Whether you want to collaborate on a project, discuss opportunities, or
         just say hello — I’d love to hear from you.
       </motion.p>
 
-      <div className="flex flex-col lg:flex-row gap-10 px-10 w-[80%] mx-auto items-center justify-between">
+      <div className="flex flex-col lg:flex-row gap-10 w-full max-w-6xl items-center justify-between">
         {/* Contact Form */}
         <motion.form
           onSubmit={handleSubmit}
           initial={{ opacity: 0, y: 40 }}
           animate={{ opacity: 1, y: 0 }}
           transition={{ delay: 0.4, duration: 0.7 }}
-          className="w-full max-w-lg bg-[#1A1A1A]/60 backdrop-blur-md rounded-2xl shadow-md shadow-indigo-400/10 p-8"
+          className="w-full max-w-lg bg-[#1A1A1A]/60 backdrop-blur-md rounded-2xl shadow-md shadow-indigo-400/10 p-6 sm:p-8"
         >
           <div className="mb-4">
             <label className="block text-sm mb-2">Name</label>
@@ -86,7 +84,7 @@ function ContactPg() {
           <div className="mb-6">
             <label className="block text-sm mb-2">Message</label>
             <textarea
-              rows="4"
+              rows={4}
               name="message"
               placeholder="Your Message"
               value={formData.message}
@@ -103,12 +101,13 @@ function ContactPg() {
             Send Message <Send size={18} />
           </button>
         </motion.form>
+
         {/* Social Links */}
         <motion.div
           initial={{ opacity: 0, y: 20 }}
           animate={{ opacity: 1, y: 0 }}
           transition={{ delay: 0.5, duration: 0.7 }}
-          className="flex flex-col gap-4 mt-10 w-full max-w-md"
+          className="flex flex-col gap-4 mt-6 lg:mt-10 w-full max-w-md px-2"
         >
           {socialLinks.map((link) => (
             <a
@@ -116,16 +115,18 @@ function ContactPg() {
               href={link.href}
               target="_blank"
               rel="noopener noreferrer"
-              className="flex items-center justify-between w-full px-5 py-3 rounded-lg border border-gray-600 bg-transparent text-gray-300 hover:border-[#5454D4] hover:text-[#5454D4] transition-colors"
+              className="flex flex-col items-start gap-1 px-5 py-3 rounded-lg border border-gray-600 bg-transparent text-gray-300 hover:border-[#5454D4] hover:text-[#5454D4] transition-colors"
             >
-              {/* Left side: Icon + Name */}
+              {/* Top row: icon + name */}
               <div className="flex items-center gap-3">
                 {link.icon}
-                <span className="font-medium">{link.name}</span>
+                <span className="font-medium text-sm sm:text-base">
+                  {link.name}
+                </span>
               </div>
 
-              {/* Right side: the actual link text */}
-              <span className="text-sm truncate max-w-[200px] text-gray-400 hover:text-[#5454D4]">
+              {/* Bottom row: actual link */}
+              <span className="text-xs sm:text-sm text-gray-400 hover:text-[#5454D4] break-all">
                 {link.href.replace("https://", "").replace("mailto:", "")}
               </span>
             </a>

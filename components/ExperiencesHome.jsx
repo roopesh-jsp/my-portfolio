@@ -10,7 +10,7 @@ const ExperienceLinks = () => {
       {Experience.map((exp, index) => (
         <Link
           key={index}
-          href="/experience"
+          href={`/experience#${index + ""}`}
           className="flex w-72 h-24 rounded-xl overflow-hidden border border-[#5454D4]/40 hover:border-[#5454D4] transition-all group"
         >
           {/* Left Icon Section */}

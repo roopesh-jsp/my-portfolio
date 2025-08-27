@@ -1,6 +1,5 @@
 "use client";
-import { navLinks } from "@/data/constants";
-import { secondary } from "@/data/constants";
+import { navLinks, secondary } from "@/data/constants";
 import Link from "next/link";
 import React, { useEffect, useState } from "react";
 import { Menu, X } from "lucide-react";
@@ -25,12 +24,13 @@ function NavBar() {
     window.addEventListener("scroll", handleScroll);
     return () => window.removeEventListener("scroll", handleScroll);
   }, []);
-
+  // ${ isScrolled ? "backdrop-blur-md bg-[rgba(25,25,27,0.75)] shadow-lg" : ""}
   return (
     <div
-      className={`flex ${
-        isScrolled ? "backdrop-blur-md bg-[rgba(25,25,27,0.75)] shadow-lg" : ""
-      } items-center justify-between lg:px-12 px-6 py-4 w-[100vw] sticky top-0 transition-all duration-500 ease-in-out z-20`}
+      className={`flex
+  ${isScrolled ? " bg-[rgba(25,25,27,0.75)] shadow-lg" : ""}
+
+      items-center justify-between lg:px-12 px-6 py-4 w-[100vw] sticky top-0 transition-all duration-500 ease-in-out z-20`}
     >
       {/* Logo */}
       <motion.h1
@@ -98,65 +98,79 @@ function NavBar() {
         {menuOpen ? <></> : <Menu size={28} />}
       </button>
 
-      {/* Mobile Drawer */}
+      {/* Mobile Drawer + Overlay */}
       <AnimatePresence>
         {menuOpen && (
-          <motion.nav
-            key="mobile-nav"
-            initial={{ x: "100%" }}
-            animate={{ x: 0 }}
-            exit={{ x: "100%" }}
-            transition={{ type: "spring", damping: 20, stiffness: 200 }}
-            className="fixed top-0 right-0 h-full p-8 flex flex-col gap-6 md:hidden bg-[#19191B] z-30"
-          >
-            <button
+          <>
+            {/* Overlay */}
+            <motion.div
+              key="overlay"
+              initial={{ opacity: 0 }}
+              animate={{ opacity: 1 }}
+              exit={{ opacity: 0 }}
+              transition={{ duration: 0.2 }}
+              className="fixed inset-0 bg-black/50 z-30 md:hidden"
               onClick={() => setMenuOpen(false)}
-              className="self-end mb-8 cursor-pointer"
-              aria-label="Close menu"
-            >
-              <X size={28} />
-            </button>
+            />
 
-            {navLinks.map((ele, i) => (
+            {/* Drawer */}
+            <motion.nav
+              key="mobile-nav"
+              initial={{ x: "100%" }}
+              animate={{ x: 0 }}
+              exit={{ x: "100%" }}
+              transition={{ type: "spring", damping: 20, stiffness: 200 }}
+              className="fixed top-0 right-0 h-full w-3/4 p-8 flex flex-col gap-6 md:hidden bg-[#19191B] z-40 shadow-xl"
+            >
+              <button
+                onClick={() => setMenuOpen(false)}
+                className="self-end mb-8 cursor-pointer"
+                aria-label="Close menu"
+              >
+                <X size={28} className="text-white" />
+              </button>
+
+              {navLinks.map((ele, i) => (
+                <motion.div
+                  key={ele.label}
+                  initial={{ opacity: 0, y: 20 }}
+                  animate={{ opacity: 1, y: 0 }}
+                  transition={{
+                    delay: i * 0.1,
+                    type: "spring",
+                    stiffness: 200,
+                  }}
+                >
+                  <Link
+                    href={ele.link}
+                    className="text-base font-normal transition-colors w-full text-center text-white"
+                    style={{
+                      color: pathname === ele.link ? secondary : "inherit",
+                      fontWeight: 400,
+                    }}
+                    onClick={() => setMenuOpen(false)}
+                  >
+                    {ele.label}
+                  </Link>
+                </motion.div>
+              ))}
+
               <motion.div
-                key={ele.label}
-                initial={{ opacity: 0, y: 20 }}
-                animate={{ opacity: 1, y: 0 }}
-                transition={{
-                  delay: i * 0.1,
-                  type: "spring",
-                  stiffness: 200,
-                }}
+                whileHover={{ scale: 1.05 }}
+                whileTap={{ scale: 0.95 }}
+                transition={{ type: "spring", stiffness: 300, damping: 15 }}
               >
                 <Link
-                  href={ele.link}
-                  className="text-base font-normal transition-colors w-full text-center"
-                  style={{
-                    color: pathname === ele.link ? secondary : "inherit",
-                    fontWeight: 400,
-                  }}
+                  href="/ai"
+                  className="mt-10 text-center px-6 py-2 flex items-center gap-2 rounded border border-solid border-[#ccc] text-sm font-normal transition-colors hover:bg-indigo-400 hover:text-white"
+                  style={{ color: "inherit", borderColor: "#ccc" }}
                   onClick={() => setMenuOpen(false)}
                 >
-                  {ele.label}
+                  <span>Chat AI</span> <RiGeminiFill />
                 </Link>
               </motion.div>
-            ))}
-
-            <motion.div
-              whileHover={{ scale: 1.05 }}
-              whileTap={{ scale: 0.95 }}
-              transition={{ type: "spring", stiffness: 300, damping: 15 }}
-            >
-              <Link
-                href="/ai"
-                className="mt-10 text-center px-6 py-2 flex items-center gap-2 rounded border border-solid border-[#ccc] text-sm font-normal transition-colors hover:bg-indigo-400 hover:text-white"
-                style={{ color: "inherit", borderColor: "#ccc" }}
-                onClick={() => setMenuOpen(false)}
-              >
-                <span>Chat AI</span> <RiGeminiFill />
-              </Link>
-            </motion.div>
-          </motion.nav>
+            </motion.nav>
+          </>
         )}
       </AnimatePresence>
     </div>

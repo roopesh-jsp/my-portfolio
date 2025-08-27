@@ -21,12 +21,13 @@ const Page = () => {
         {Experience.map((exp, index) => (
           <motion.div
             key={index}
-            id={`${exp.company}-${exp.role}`.toLowerCase().replace(/\s+/g, "-")}
             initial={{ opacity: 0, y: 40 }}
+            animate={{ opacity: 1, y: 0 }}
             whileInView={{ opacity: 1, y: 0 }}
             transition={{ duration: 0.7, delay: index * 0.2 }}
-            viewport={{ once: true }}
-            className=" backdrop-blur-2xl rounded-xl  shadow-md/40 shadow-[#5454D4] p-6"
+            viewport={{ once: false, amount: 0.2 }}
+            id={index + ""}
+            className="scroll-mt-[200px]"
           >
             {/* Header */}
             <div className="flex flex-col md:flex-row gap-3 md:items-center justify-between md:mb-4 mb-2">
