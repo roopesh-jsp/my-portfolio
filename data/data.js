@@ -131,3 +131,32 @@ export const projectsData = [
     img: p3,
   },
 ];
+
+export const Experience = [
+  {
+    company: "Bluestocks Fintech",
+    role: "SDE Intern",
+    location: "Remote",
+    duration: "Feb 2025 – Apr 2025",
+    timeline: "2 Months",
+    details: [
+      "Collaborated in a team of 8 to develop a fully functional IPO investment platform using React, Node.js, and Bootstrap, delivered within 1 month.",
+      "Designed and implemented REST APIs in Node.js to manage dynamic data flow and optimize backend performance.",
+      "Integrated JWT-based authentication for secure user access.",
+      "Gained hands-on experience with stock market technologies and contributed to fintech solutions related to IPOs and investment platforms.",
+    ],
+  },
+  {
+    company: "Across The Globe",
+    role: "Full Stack Developer Intern",
+    location: "Remote",
+    duration: "Jun 2025 – Present",
+    timeline: "6 Months",
+    details: [
+      "Contributing to the development of an enterprise-level web application with a scalable architecture.",
+      "Built a Chrome extension to automate the hiring process on LinkedIn and Naukri, streamlining recruitment workflows.",
+      "Implemented frontend features and optimized UI components for better usability and performance.",
+      "Collaborated with a cross-functional team on large-scale development workflows and feature delivery.",
+    ],
+  },
+];

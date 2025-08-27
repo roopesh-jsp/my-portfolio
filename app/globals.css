@@ -1,6 +1,10 @@
 @import "tailwindcss";
 @import "tw-animate-css";
 
+html {
+  scroll-behavior: smooth;
+}
+
 @custom-variant dark (&:is(.dark *));
 .custom-gradient-1 {
   background: linear-gradient(135deg, #a259ff33, #377dff33);

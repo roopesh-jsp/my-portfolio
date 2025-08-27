@@ -1,4 +1,5 @@
 // import GradientBackground from "@/components/GradientBox";
+import ExperienceLinks from "@/components/ExperiencesHome";
 import Hero from "@/components/Hero";
 import IconsRow from "@/components/IconsRow";
 import ProjectTimeline from "@/components/ProjectTimeLine";
@@ -14,6 +15,10 @@ export default function Home() {
       <Talents />
       <IconsRow />
       <ProjectTimeline projectsData={projectsData.slice(0, 3)} isHome={true} />
+      <h1 className="text-3xl md:text-5xl  font-bold text-center mt-10 text-indigo-400">
+        Experience
+      </h1>
+      <ExperienceLinks />
       <TechStackSection />
     </div>
   );
