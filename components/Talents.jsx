@@ -62,7 +62,7 @@ export default function Talents() {
             key={index}
             className="p-2 rounded-2xl border border-transparent transition-all duration-300 ease-in-out mobile-shadow"
             style={{
-              boxShadow: `0 3px 7px -1px ${talent.shadow}`,
+              border: `2px solid ${talent.shadow}`,
             }}
           >
             {/* Accordion Header */}
