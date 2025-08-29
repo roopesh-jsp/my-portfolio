@@ -1,9 +1,7 @@
 import NavBar from "@/components/NavBar";
 import "./globals.css";
 import { Poppins, Fira_Code } from "next/font/google";
-import { bg } from "@/data/constants";
 import Footer from "@/components/Fotter";
-import GradientBoxes from "@/components/GradientBox";
 
 const poppins = Poppins({
   variable: "--font-poppins",
@@ -17,8 +15,56 @@ const firaCode = Fira_Code({
 });
 
 export const metadata = {
-  title: "Roopesh Kumar",
-  description: "portfolio of fullstack developer roopesh kumar",
+  title: "Roopesh Kumar | Fullstack Developer",
+  description:
+    "Portfolio of Roopesh Kumar, a fullstack developer specializing in MERN, AI/ML, and building scalable web apps.",
+  keywords: [
+    "Roopesh Kumar",
+    "Fullstack Developer",
+    "MERN Stack",
+    "AI/ML Developer",
+    "Next.js Portfolio",
+    "Software Engineer",
+  ],
+  authors: [
+    { name: "Roopesh Kumar Jonnakuti", url: "https://roopeshkumar.vercel.app" },
+  ],
+  creator: "Roopesh Kumar",
+  metadataBase: new URL("https://roopeshkumar.vercel.app"),
+
+  openGraph: {
+    title: "Roopesh Kumar | Fullstack Developer",
+    description:
+      "Explore the portfolio of Roopesh Kumar, a fullstack developer skilled in MERN,Next js, and AI technologies.",
+    url: "https://roopeshkumar.vercel.app",
+    siteName: "Roopesh Kumar Portfolio",
+    images: [
+      {
+        url: "https://roopeshkumar.vercel.app/og-image.png", // 👈 put this in /public
+        width: 1200,
+        height: 630,
+        alt: "Roopesh Kumar Portfolio Preview",
+      },
+    ],
+    locale: "en_US",
+    type: "website",
+  },
+
+  twitter: {
+    card: "summary_large_image",
+    title: "Roopesh Kumar | Fullstack Developer",
+    description:
+      "Portfolio of Roopesh Kumar, fullstack developer specializing in MERN, AI/ML, and modern web technologies.",
+    images: ["https://roopeshkumar.vercel.app/og-image.png"], // same as OG image
+    creator: "@yourtwitterhandle", // 👈 optional
+  },
+
+  icons: {
+    icon: "/favicon.ico",
+    apple: "/apple-touch-icon.png",
+  },
+
+  category: "portfolio",
 };
 
 export default function RootLayout({ children }) {

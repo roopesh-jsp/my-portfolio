@@ -40,7 +40,7 @@ const HeroImage = () => {
             alt="Roopesh"
             width={320}
             height={500}
-            className="object-cover rotate-[-25deg] absolute bottom-[-20%] left-[25%] scale-110 md:scale-100 md:bottom-[-10%] md:left-[10%] z-30"
+            className="object-cover rotate-[-25deg] absolute bottom-[-10%] left-[10%] scale-110 md:scale-100 md:bottom-[-10%] md:left-[10%] z-30"
           />
         </div>
       </div>

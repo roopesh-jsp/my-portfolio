@@ -28,7 +28,7 @@ function NavBar() {
   return (
     <div
       className={`flex items-center justify-between lg:px-12 px-6 py-4 w-[100vw] sticky top-0 transition-all duration-500 ease-in-out z-20
-      ${isScrolled ? "bg-[rgba(25,25,27,0.75)] shadow-lg" : ""}`}
+      ${isScrolled ? "bg-[#19191B] shadow-lg" : ""}`}
     >
       {/* Logo */}
       <motion.h1
