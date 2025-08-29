@@ -1,21 +1,43 @@
-export default function GradientBackground({ upside }) {
+"use client";
+import { motion } from "framer-motion";
+
+const GradientBoxes = () => {
   return (
-    <div
-    // className={`
-    //   absolute
-    //   ${upside ? "bottom-[-240px]" : "top-[-340px]"}
-    //   left-[-100px]
-    //   w-[25%] h-[933.79px]
-    //   rounded-[233.5px]
-    //   z-0
-    //   pointer-events-none
-    //   filter blur-3xl
-    // `}
-    // style={{
-    //   background: "linear-gradient(54.37deg, #5454D4 0%, #5454D4 42%)",
-    //   opacity: 0.11,
-    //   transform: `${upside ? "rotate(54.37deg)" : "rotate(-54.37deg)"}`,
-    // }}
-    />
+    // Add this wrapper with a 'relative' class
+    <div className="relative w-full h-full">
+      {/* Top-Left Gradient Box */}
+      <motion.div
+        className="absolute z-0 w-[460px] h-[1200px]"
+        style={{
+          background: "linear-gradient(54deg, #5454D4 42%, #5454D4 100%)",
+          transform: "rotate(-54deg) translate(-50%, -50%)",
+          opacity: 0.07,
+          borderRadius: "233.5px",
+          left: "30%",
+          top: "0px",
+        }}
+        initial={{ opacity: 0 }}
+        animate={{ opacity: 0.07 }}
+        transition={{ duration: 1 }}
+      />
+
+      {/* Top-Right Gradient Box */}
+      <motion.div
+        className="absolute z-0 w-[460px] h-[1200px]"
+        style={{
+          background: "linear-gradient(54deg, #5454D4 42%, #5454D4 100%)",
+          transform: "rotate(54deg) translate(50%, -50%)",
+          opacity: 0.07,
+          borderRadius: "233.5px",
+          right: "0%",
+          top: "-25%",
+        }}
+        initial={{ opacity: 0 }}
+        animate={{ opacity: 0.07 }}
+        transition={{ duration: 1 }}
+      />
+    </div>
   );
-}
+};
+
+export default GradientBoxes;

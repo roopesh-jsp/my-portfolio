@@ -3,6 +3,7 @@ import "./globals.css";
 import { Poppins, Fira_Code } from "next/font/google";
 import { bg } from "@/data/constants";
 import Footer from "@/components/Fotter";
+import GradientBoxes from "@/components/GradientBox";
 
 const poppins = Poppins({
   variable: "--font-poppins",
@@ -22,11 +23,12 @@ export const metadata = {
 
 export default function RootLayout({ children }) {
   return (
-    <html lang="en">
+    <html lang="en" className="dark">
       <body
-        className={`${poppins.variable} ${firaCode.variable} antialiased bg-[#19191B] text-white overflow-x-hidden  `}
+        className={`${poppins.variable} ${firaCode.variable} antialiased bg-white text-black dark:bg-[#19191B] dark:text-white overflow-x-hidden`}
       >
-        <main className="w-full">
+        <main className="w-full relative">
+          {/* <GradientBoxes /> */}
           <NavBar />
           {children}
           <Footer />

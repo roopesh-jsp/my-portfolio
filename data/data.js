@@ -16,7 +16,7 @@ export const talents = [
   {
     icon: dev1,
     bg: "bg-[rgba(84,84,212,0.1)]",
-    shadow: "rgba(84,84,212,0.11)",
+    shadow: "rgba(84,84,212,0.21)",
     title: "Frontend development",
     text: "Skilled in building responsive and interactive user interfaces using React, Next.js, and modern frontend technologies.",
   },
@@ -30,7 +30,7 @@ export const talents = [
   {
     icon: ai,
     bg: "bg-[rgba(240,64,55,0.1)]",
-    shadow: "rgba(240,64,55,0.11)",
+    shadow: "rgba(240,64,55,0.17)",
     title: "LangChain Integration",
     text: "Hands-on with building Generative AI applications using LangChain, OpenAI APIs, and prompt engineering.",
   },
@@ -44,14 +44,14 @@ export const talents = [
   {
     icon: layers,
     bg: "bg-[rgba(240,64,55,0.1)]",
-    shadow: "rgba(240,64,55,0.11)",
+    shadow: "rgba(240,64,55,0.17)",
     title: "Core Subjects",
     text: "Good knowledge of Computer Science fundamentals including OOPS, DBMS, OS, and Computer Networks.",
   },
   {
     icon: db,
     bg: "bg-[rgba(84,84,212,0.1)]",
-    shadow: "rgba(84,84,212,0.11)",
+    shadow: "rgba(84,84,212,0.21)",
     title: "Databases",
     text: "Proficient in working with both SQL and NoSQL databases such as MySQL and MongoDB.",
   },

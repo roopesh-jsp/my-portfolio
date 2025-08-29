@@ -60,7 +60,7 @@ export default function Talents() {
         {talents.map((talent, index) => (
           <div
             key={index}
-            className="p-2 rounded-2xl border border-transparent transition-all duration-300 ease-in-out mobile-shadow"
+            className="p-1 rounded-2xl border border-transparent transition-all duration-300 ease-in-out mobile-shadow"
             style={{
               border: `2px solid ${talent.shadow}`,
             }}
