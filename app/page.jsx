@@ -15,8 +15,8 @@ export default function Home() {
       <Talents />
       <IconsRow />
       <ProjectTimeline projectsData={projectsData.slice(0, 3)} isHome={true} />
-      <h1 className="text-3xl md:text-5xl  font-bold text-center mt-10 text-indigo-400">
-        Experience
+      <h1 className="text-3xl md:text-5xl  font-bold text-center mt-10">
+        My <span className="text-indigo-400"> Experience</span>
       </h1>
       <ExperienceLinks />
       <TechStackSection />

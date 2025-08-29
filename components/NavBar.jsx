@@ -24,13 +24,11 @@ function NavBar() {
     window.addEventListener("scroll", handleScroll);
     return () => window.removeEventListener("scroll", handleScroll);
   }, []);
-  // ${ isScrolled ? "backdrop-blur-md bg-[rgba(25,25,27,0.75)] shadow-lg" : ""}
+
   return (
     <div
-      className={`flex
-  ${isScrolled ? " bg-[rgba(25,25,27,0.75)] shadow-lg" : ""}
-
-      items-center justify-between lg:px-12 px-6 py-4 w-[100vw] sticky top-0 transition-all duration-500 ease-in-out z-20`}
+      className={`flex items-center justify-between lg:px-12 px-6 py-4 w-[100vw] sticky top-0 transition-all duration-500 ease-in-out z-20
+      ${isScrolled ? "bg-[rgba(25,25,27,0.75)] shadow-lg" : ""}`}
     >
       {/* Logo */}
       <motion.h1
@@ -42,7 +40,7 @@ function NavBar() {
       </motion.h1>
 
       {/* Desktop Nav */}
-      <div className="flex gap-10 items-center w-[60%] justify-between">
+      <div className="flex gap-10 items-center">
         <nav className="hidden md:flex gap-8 items-center">
           {navLinks.map((ele) => (
             <motion.div
@@ -73,18 +71,18 @@ function NavBar() {
           ))}
         </nav>
 
-        {/* Contact Us Button */}
         <motion.div
           whileHover={{ scale: 1.05 }}
           whileTap={{ scale: 0.95 }}
           transition={{ type: "spring", stiffness: 300, damping: 15 }}
+          className="hidden md:flex items-center"
         >
           <Link
             href="/ai"
-            className="ml-6 hidden md:flex md:items-center md:gap-2 px-6 py-2 text-sm rounded border border-solid border-white/40 font-normal transition-colors hover:bg-indigo-500 hover:text-white"
+            className="ml-6 flex items-center gap-2 px-6 py-2 text-sm rounded border border-solid border-white/40 font-normal transition-colors hover:bg-indigo-500 hover:text-white"
             style={{ color: "inherit", borderColor: "#ffffff66" }}
           >
-            <span>Chat AI</span> <RiGeminiFill />
+            <span className="whitespace-nowrap">Chat AI</span> <RiGeminiFill />
           </Link>
         </motion.div>
       </div>

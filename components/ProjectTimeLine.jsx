@@ -17,7 +17,7 @@ const ProjectTimeline = ({ projectsData, isHome }) => {
       className={`w-full flex flex-col px-5 items-center py-10 ${nunito.className}`}
     >
       <h2 className="text-3xl md:text-5xl font-extrabold mb-16 text-white tracking-wide">
-        <span className="text-indigo-400">Project</span> Timeline
+        <span className="text-indigo-400">Projects</span> Timeline
       </h2>
 
       <div className="relative w-full max-w-5xl mx-auto">

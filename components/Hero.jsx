@@ -55,7 +55,7 @@ function Hero() {
         </div>
       </div>
 
-      <div className="relative lg:mt-12 md:mt-0 w-[70%]  lg:w-[45%] mt-20 ">
+      <div className="relative md:mt-20 lg:mt-0 w-[70%] md:max-w-[400px] lg:w-[45%] mt-20 lg:max-w-[600px] ">
         {/* Profile Image */}
         <HeroImage />
         {/* Decorative Shapes */}
