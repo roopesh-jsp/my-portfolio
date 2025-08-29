@@ -4,6 +4,11 @@
 html {
   scroll-behavior: smooth;
 }
+@media (min-width: 768px) {
+  .mobile-shadow {
+    box-shadow: none !important;
+  }
+}
 
 @custom-variant dark (&:is(.dark *));
 .custom-gradient-1 {

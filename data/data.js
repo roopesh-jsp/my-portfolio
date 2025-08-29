@@ -15,45 +15,43 @@ import p7 from "@/assests/p7.png";
 export const talents = [
   {
     icon: dev1,
-    color: "bg-[rgba(84,84,212,0.1)]",
+    bg: "bg-[rgba(84,84,212,0.1)]",
+    shadow: "rgba(84,84,212,0.09)",
     title: "Frontend development",
     text: "Skilled in building responsive and interactive user interfaces using React, Next.js, and modern frontend technologies.",
   },
   {
     icon: dev2,
+    bg: "bg-[rgba(254,220,90,0.1)]",
+    shadow: "rgba(254,220,90,0.09)",
     title: "Backend development",
-    color: "bg-[rgba(254,220,90,0.1)]",
-
     text: "Experienced in creating scalable and secure RESTful APIs with Node.js, Express, and authentication mechanisms.",
   },
   {
     icon: ai,
+    bg: "bg-[rgba(240,64,55,0.1)]",
+    shadow: "rgba(240,64,55,0.09)",
     title: "LangChain Integration",
-
-    color: "bg-[rgba(240,64,55,0.1)]",
-
     text: "Hands-on with building Generative AI applications using LangChain, OpenAI APIs, and prompt engineering.",
   },
   {
     icon: tree,
+    bg: "bg-[rgba(254,220,90,0.1)]",
+    shadow: "rgba(254,220,90,0.09)",
     title: "DSA",
-    color: "bg-[rgba(254,220,90,0.1)]",
-
     text: "Strong grasp of Data Structures and Algorithms with daily problem-solving practice to write optimized solutions.",
   },
   {
     icon: layers,
-    color: "bg-[rgba(240,64,55,0.1)]",
-
+    bg: "bg-[rgba(240,64,55,0.1)]",
+    shadow: "rgba(240,64,55,0.09)",
     title: "Core Subjects",
     text: "Good knowledge of Computer Science fundamentals including OOPS, DBMS, OS, and Computer Networks.",
   },
-
   {
     icon: db,
-
-    color: "bg-[rgba(84,84,212,0.1)]",
-
+    bg: "bg-[rgba(84,84,212,0.1)]",
+    shadow: "rgba(84,84,212,0.09)",
     title: "Databases",
     text: "Proficient in working with both SQL and NoSQL databases such as MySQL and MongoDB.",
   },
