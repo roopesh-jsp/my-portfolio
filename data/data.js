@@ -11,6 +11,7 @@ import p4 from "@/assests/p4.png";
 import p5 from "@/assests/p5.png";
 import p6 from "@/assests/p6.png";
 import p7 from "@/assests/p7.png";
+import learnly from "@/assests/learnly.png";
 
 export const talents = [
   {
@@ -59,6 +60,25 @@ export const talents = [
 
 export const projectsData = [
   {
+    date: "Sep 2025",
+    title: "Learnly",
+    sourceCode: "https://github.com/roopesh-jsp/Learnly",
+    liveDemo: "https://learnlyrj.vercel.app/",
+    techStack: [
+      "Next js",
+      "Typescript",
+      "Auth js",
+      "Tailwind css",
+      "Prisma ORM",
+      "PostgreSQL",
+      "Gemini",
+    ],
+    company: "Next js",
+    img: learnly,
+    description:
+      "Learnly is an AI-powered full-stack application that I’ve been building for about one and a half months, with the goal of solving a common problem many of us face when starting a new technology, preparing for an exam, or studying a new subject—we often don’t know exactly what to cover, what the subtopics are, or how to structure our learning. Normally, this process involves several scattered steps like researching, listing topics, and tracking progress, which can be time-consuming and unorganized, so I wanted to bring all of these steps into one place. With Learnly, you can create roadmaps for your learning goals, track your progress, use AI-powered quizzes to test your knowledge, and even download printable worksheets for offline study. One of the most exciting features is the ability to share roadmaps—friends or classmates can clone your roadmap, and whenever you update it, the changes automatically reflect in their copy as well, making collaborative learning much easier. This feature is also highly beneficial for online tutors and instructors, who can create and share exclusive roadmaps with their students. Another advantage is flexibility, as roadmaps can be created entirely by AI, manually, or through a combination of both. In short, Learnly is designed to make structured, collaborative, and intelligent learning simple and accessible.",
+  },
+  {
     date: "Jul 2025",
     title: "short-notes maker",
     company: "Hugging Face",
@@ -68,7 +88,8 @@ export const projectsData = [
     img: p6,
     sourceCode:
       "https://github.com/roopesh-jsp/Ai-chatbot/tree/main/short-notes%20maker",
-    // liveDemo: "https://ecommerce-demo.vercel.app",
+    liveDemo:
+      "https://www.linkedin.com/feed/update/urn:li:activity:7339569980557971456/",
     techStack: ["Fast APi", "Hugging face", "Streamlit"],
   },
   {
