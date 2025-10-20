@@ -12,6 +12,7 @@ import p5 from "@/assests/p5.png";
 import p6 from "@/assests/p6.png";
 import p7 from "@/assests/p7.png";
 import learnly from "@/assests/learnly.png";
+import chatpdf from "@/assests/chatPdf2.png";
 
 export const talents = [
   {
@@ -59,6 +60,26 @@ export const talents = [
 ];
 
 export const projectsData = [
+  {
+    date: "Oct 2025",
+    title: "Chat-PDFs",
+    sourceCode: "https://github.com/roopesh-jsp/GEN-AI/tree/main/pdf-chatbot",
+    liveDemo:
+      "https://www.linkedin.com/posts/rupesh13_ai-python-langchain-activity-7383802409933910016-MKqx?utm_source=social_share_send&utm_medium=member_desktop_web&rcm=ACoAAD-SVUoB5BkTVGEG13hWURRmEFIqk706PHo",
+    techStack: [
+      "Python",
+      "LangChain",
+      "Streamlit",
+      "FAISS",
+      "HuggingFaceHub",
+      "Gemini 2.5 Flash",
+    ],
+    company: "Retrieval-Augmented Generation (RAG)",
+    img: chatpdf,
+    description:
+      "Tired of endlessly using CTRL+F to find information in dense documents? I built a solution — Chat-PDFs, an intelligent AI application that lets you have real conversations with your documents. Whether you’re a recruiter screening hundreds of resumes or a student studying research papers, Chat-PDFs helps you extract insights instantly. For example, a recruiter can upload resumes and simply ask, 'Which candidates have over 5 years of Python experience and have worked with AWS?', and get accurate, sourced answers in seconds. It’s also perfect for summarizing lengthy reports — just ask to 'summarize key findings' and receive a concise overview for rapid understanding. The system is powered by a Retrieval-Augmented Generation (RAG) pipeline built using Python, LangChain, and Google’s Gemini 2.5 Flash model, with FAISS and HuggingFaceHub handling embeddings and semantic search. The UI is built with Streamlit, making the experience interactive and seamless. This project was an exciting deep dive into building practical, real-world AI tools that simplify complex information retrieval.",
+  },
+
   {
     date: "Sep 2025",
     title: "Learnly",
