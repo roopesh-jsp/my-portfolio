@@ -9,6 +9,7 @@ import {
   FaPython,
   FaBootstrap,
   FaDatabase,
+  FaBrain,
 } from "react-icons/fa";
 import {
   SiExpress,
@@ -18,6 +19,7 @@ import {
   SiNextdotjs,
   SiFastapi,
   SiLangchain,
+  SiGooglegemini,
 } from "react-icons/si";
 import { motion } from "framer-motion";
 
@@ -41,6 +43,8 @@ const techRows = [
     { name: "Node.js", icon: <FaNodeJs className="text-green-500" /> },
     { name: "Express", icon: <SiExpress className="text-white" /> },
     { name: "Python", icon: <FaPython className="text-blue-300" /> },
+    { name: "Gemini", icon: <SiGooglegemini className="text-white" /> },
+    { name: "RAG", icon: <FaBrain className="text-teal-500" /> },
   ],
   [
     { name: "Tailwind CSS", icon: <SiTailwindcss className="text-cyan-400" /> },
@@ -49,10 +53,12 @@ const techRows = [
     { name: "SQL", icon: <FaDatabase className="text-gray-400" /> },
     { name: "Firebase", icon: <SiFirebase className="text-yellow-400" /> },
     { name: "FastAPI", icon: <SiFastapi className="text-green-300" /> },
+    { name: "Gemini", icon: <SiGooglegemini className="text-white" /> },
     { name: "LangChain", icon: <SiLangchain className="text-indigo-300" /> },
     { name: "Tailwind CSS", icon: <SiTailwindcss className="text-cyan-400" /> },
     { name: "Bootstrap", icon: <FaBootstrap className="text-purple-400" /> },
     { name: "MongoDB", icon: <SiMongodb className="text-green-400" /> },
+    { name: "RAG", icon: <FaBrain className="text-teal-500" /> },
     { name: "SQL", icon: <FaDatabase className="text-gray-400" /> },
     { name: "Firebase", icon: <SiFirebase className="text-yellow-400" /> },
     { name: "FastAPI", icon: <SiFastapi className="text-green-300" /> },
@@ -81,8 +87,7 @@ export default function TechStackSection() {
           viewport={{ once: true }}
           className="text-gray-300 max-w-3xl mx-auto"
         >
-          Tools and technologies we use to build world-class digital
-          experiences.
+          Tools and technologies i use to build world-class digital experiences.
         </motion.p>
       </div>
 
