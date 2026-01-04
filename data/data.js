@@ -174,11 +174,11 @@ export const projectsData = [
 
 export const Experience = [
   {
-    company: "Across The Globe",
-    role: "Full Stack Developer Intern",
+    company: "Banao Technologies",
+    role: "MERN Developer Intern",
     location: "Remote",
     duration: "Jun 2025 – Present",
-    timeline: "6 Months",
+    timeline: "Ongoing",
     details: [
       "Contributing to the development of an enterprise-level web application with a scalable architecture.",
       "Built a Chrome extension to automate the hiring process on LinkedIn and Naukri, streamlining recruitment workflows.",
@@ -186,6 +186,21 @@ export const Experience = [
       "Collaborated with a cross-functional team on large-scale development workflows and feature delivery.",
     ],
   },
+  {
+  company: "T4 Elements",
+  role: "Freelance",
+  location: "Remote",
+  duration: "Mar 2024 – Present",
+  timeline: "Ongoing",
+  details: [
+    "Worked with multiple clients to design and develop full-stack web applications using the MERN stack.",
+    "Built responsive and user-friendly interfaces using React, Tailwind CSS, and modern UI libraries.",
+    "Developed RESTful APIs with Node.js and Express, integrating databases like MongoDB for scalable data management.",
+    "Implemented authentication, role-based access control, and secure data handling in client projects.",
+    "Collaborated directly with clients to gather requirements, deliver features, and maintain production applications.",
+  ],
+}
+,
   {
     company: "Bluestocks Fintech",
     role: "SDE Intern",
