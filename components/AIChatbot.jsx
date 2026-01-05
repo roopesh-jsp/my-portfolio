@@ -83,6 +83,9 @@ function AiChatBot() {
             ? {
                 ...msg,
                 text: data.text || "SORRY: No response from AI.",
+                items: data.items || [],
+                title: data.title || "",
+                type: data.type || "text",
                 isLoading: false,
               }
             : msg
@@ -196,7 +199,30 @@ function AiChatBot() {
                           : "bg-white/10 text-gray-200 rounded-bl-none"
                       }`}
                     >
-                      {msg.text}
+                      {msg.type === "list" ? (
+                        <div className="space-y-2">
+                          {/* Title */}
+                          <p className="font-semibold text-indigo-300 text-sm">
+                            {msg.title}
+                          </p>
+
+                          {/* Description */}
+                          {msg.text && (
+                            <p className="text-xs text-gray-300 leading-relaxed bg-white/5 px-3 py-2 rounded-md border border-white/10">
+                              {msg.text}
+                            </p>
+                          )}
+
+                          {/* List */}
+                          <ul className="list-disc pl-5 space-y-1 text-sm text-gray-200">
+                            {msg.items.map((item, i) => (
+                              <li key={i}>{item}</li>
+                            ))}
+                          </ul>
+                        </div>
+                      ) : (
+                        <p>{msg.text}</p>
+                      )}
                     </div>
                   )}
                 </div>

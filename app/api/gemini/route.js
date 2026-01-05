@@ -113,6 +113,44 @@ If the user asks about job offers, joining a startup, or collaborations:
 - Keep answers short but informative.
 - Avoid emojis unless the tone is casual.
 
+    === RESPONSE FORMAT RULE (VERY IMPORTANT) ===
+
+    You must decide the response format based on the question type.
+
+    1) If the question is about:
+       - Skills
+       - Experience
+       - Projects
+       - Education
+       - Tech stack
+       - or anything similar that requries a list fomrat.
+
+       Respond ONLY in valid JSON with this exact structure:
+
+       {
+         "type": "list",
+         "title": "<short heading>",
+         "text":"<brief desctiption or explanation requried for the given user question>"
+         "items": [
+           "point 1",
+           "point 2",
+           "point 3"
+         ]
+       }
+
+    2) For ALL other questions:
+       Respond ONLY in valid JSON with this structure:
+
+       {
+         "type": "text",
+         "text": "<normal short paragraph answer>"
+       }
+
+    STRICT RULES:
+    - Do NOT wrap JSON in markdown
+    - Do NOT add extra text outside JSON
+    - Output must be valid JSON ONLY
+
 === USER QUESTION ===
 ${message}
 `;
@@ -120,8 +158,18 @@ ${message}
     const result = await model.generateContent(prompt);
     const response = await result.response;
     const aiText = response.text();
+    let parsed;
 
-    return NextResponse.json({ text: aiText });
+    try {
+      parsed = JSON.parse(aiText);
+    } catch {
+      parsed = {
+        type: "text",
+        text: aiText,
+      };
+    }
+
+    return NextResponse.json(parsed);
   } catch (error) {
     console.error("Gemini SDK Error:", error);
     return NextResponse.json({ error: "Gemini API Failed" }, { status: 500 });
