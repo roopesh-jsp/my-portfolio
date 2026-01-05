@@ -9,6 +9,7 @@ function AiChatBot() {
   const [isAiLoading, setIsAiLoading] = useState(false);
   const [aiTimeoutId, setAiTimeoutId] = useState(null);
   const bottomRef = useRef(null);
+  const controllerRef = useRef(null);
 
   useEffect(() => {
     const stored = JSON.parse(localStorage.getItem("chat_messages"));
@@ -23,7 +24,7 @@ function AiChatBot() {
     bottomRef.current?.scrollIntoView({ behavior: "smooth" });
   }, [messages]);
 
-  const handleSend = () => {
+  const handleSend = async () => {
     if (!input.trim() || isAiLoading) return;
 
     const userMessage = {
@@ -43,27 +44,74 @@ function AiChatBot() {
     setInput("");
     setIsAiLoading(true);
 
-    // simulate AI delay
-    const timeout = setTimeout(() => {
+    controllerRef.current = new AbortController();
+
+    try {
+      const res = await fetch("/api/gemini", {
+        method: "POST",
+        headers: {
+          "Content-Type": "application/json",
+        },
+        body: JSON.stringify({
+          message: input,
+        }),
+        signal: controllerRef.current.signal,
+      });
+
+      // if (!res.ok) {
+      //   throw new Error("Failed to fetch AI response");
+      // }
+
+      if (!res.ok) {
+        setMessages((prev) =>
+          prev.map((msg) =>
+            msg.isLoading
+              ? {
+                  ...msg,
+                  text: "SORRY: failed to fetch AI response (maybe rate limit exceeded). please try again tomorrow.",
+                  isLoading: false,
+                }
+              : msg
+          )
+        );
+      }
+      const data = await res.json();
+
       setMessages((prev) =>
         prev.map((msg) =>
           msg.isLoading
             ? {
                 ...msg,
-                text: "This is AI response (static for now...). will add real API's very soon",
+                text: data.text || "SORRY: No response from AI.",
                 isLoading: false,
               }
             : msg
         )
       );
+    } catch (error) {
+      if (error.name !== "AbortError") {
+        setMessages((prev) =>
+          prev.map((msg) =>
+            msg.isLoading
+              ? {
+                  ...msg,
+                  text: "SORRY: Something went wrong. Please try again.",
+                  isLoading: false,
+                }
+              : msg
+          )
+        );
+      }
+    } finally {
       setIsAiLoading(false);
-    }, 2000);
-
-    setAiTimeoutId(timeout);
+      controllerRef.current = null;
+    }
   };
 
   const stopAiResponse = () => {
-    if (aiTimeoutId) clearTimeout(aiTimeoutId);
+    if (controllerRef.current) {
+      controllerRef.current.abort();
+    }
 
     setMessages((prev) => prev.filter((msg) => !msg.isLoading));
     setIsAiLoading(false);
@@ -143,6 +191,8 @@ function AiChatBot() {
                       className={`max-w-[75%] px-4 py-2 rounded-xl text-sm ${
                         msg.sender === "user"
                           ? "bg-indigo-500/80 text-white rounded-br-none"
+                          : msg.text?.startsWith("SORRY:")
+                          ? "bg-red-500/10 text-red-300 border border-red-500/30 rounded-bl-none"
                           : "bg-white/10 text-gray-200 rounded-bl-none"
                       }`}
                     >
