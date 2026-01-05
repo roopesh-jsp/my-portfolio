@@ -76,6 +76,7 @@ function AiChatBot() {
         );
       }
       const data = await res.json();
+      console.log(data);
 
       setMessages((prev) =>
         prev.map((msg) =>
@@ -87,6 +88,7 @@ function AiChatBot() {
                 title: data.title || "",
                 type: data.type || "text",
                 isLoading: false,
+                model: data.model || "",
               }
             : msg
         )
@@ -130,28 +132,71 @@ function AiChatBot() {
       <div className="flex flex-col md:flex-row gap-6">
         {/* INFO PANEL */}
         <div className="md:w-[35%] order-1 md:order-2">
-          <div className="h-full  rounded-xl py-4 px-6 backdrop-blur-md bg-white/5 border border-white/10">
+          <div className="h-full md:max-h-[75vh] overflow-hidden md:overflow-y-auto rounded-xl py-5 px-6 backdrop-blur-md bg-white/5 border border-white/10 chat-scroll">
             <h2 className="flex mb-5 items-center gap-3 text-2xl font-semibold text-indigo-400">
               <Image
                 src={ai}
                 alt="AI icon"
                 width={28}
                 height={28}
-                className="opacity-90  font-medium rounded-full  bg-indigo-500/20"
+                className="opacity-90 rounded-full bg-indigo-500/20"
               />
               <span className="px-2 py-0.5 text-sm font-medium rounded-md bg-indigo-500/10 text-indigo-300">
                 Ask My AI
               </span>
             </h2>
 
-            <p className="mt-3 text-sm text-gray-300 leading-relaxed">
-              Ask anything about me, my projects, skills, or journey. The bot
-              replies as if it’s <span className="text-white">me</span>.
+            <p className="text-sm text-gray-300 leading-relaxed">
+              Ask anything about <span className="text-white">me</span> — my
+              projects, skills, internships, or development journey. The AI
+              responds as if it’s <span className="text-white">me</span>, giving
+              concise and context-aware answers.
             </p>
 
-            <p className="mt-6 text-xs text-gray-400">
-              ⚠️ Powered by free Gemini AI. Responses may be slow or
-              unavailable.
+            <div className="mt-5 space-y-3 text-sm text-gray-300">
+              <p className="font-medium text-indigo-300">How it works:</p>
+
+              <ul className="list-disc pl-5 space-y-2">
+                <li>
+                  The system prioritizes{" "}
+                  <span className="text-white">free-tier APIs</span> to keep the
+                  experience cost-effective.
+                </li>
+                <li>
+                  It first attempts to generate a response using{" "}
+                  <span className="text-white">Gemini (gemini-1.5-flash)</span>.
+                </li>
+                <li>
+                  If the Gemini rate limit is exceeded, it automatically{" "}
+                  <span className="text-white">falls back</span> to{" "}
+                  <span className="text-white">
+                    Meta-LLaMA (meta-llama/Llama-3.1-8B-Instruct)
+                  </span>{" "}
+                  via Hugging Face.
+                </li>
+                <li>
+                  A small{" "}
+                  <span className="text-white">pill below each response</span>{" "}
+                  shows which model was used for that answer.
+                </li>
+              </ul>
+            </div>
+
+            <div className="mt-5 text-xs text-gray-400 leading-relaxed">
+              💡 Tip: Use the keyword{" "}
+              <span className="px-1.5 py-0.5 rounded bg-white/10 text-gray-200">
+                list
+              </span>{" "}
+              in your question to get a cleaner, list-based UI response. for
+              quries that have multiple items or steps.
+            </div>
+
+            <p className="mt-5 flex items-start gap-2 rounded-lg border border-orange-400/30 bg-orange-500/10 px-3 py-2 text-xs text-orange-300 backdrop-blur-sm">
+              <span className="mt-[1px]">⚠️</span>
+              <span>
+                Powered entirely by free AI tiers. Responses may occasionally be
+                slow or unavailable due to rate limits.
+              </span>
             </p>
           </div>
         </div>
@@ -191,12 +236,12 @@ function AiChatBot() {
                     </div>
                   ) : (
                     <div
-                      className={`max-w-[75%] px-4 py-2 rounded-xl text-sm ${
+                      className={`max-w-[75%] relative px-4 py-2  rounded-xl text-sm ${
                         msg.sender === "user"
                           ? "bg-indigo-500/80 text-white rounded-br-none"
                           : msg.text?.startsWith("SORRY:")
                           ? "bg-red-500/10 text-red-300 border border-red-500/30 rounded-bl-none"
-                          : "bg-white/10 text-gray-200 rounded-bl-none"
+                          : "bg-white/10 text-gray-200 rounded-bl-none pb-10"
                       }`}
                     >
                       {msg.type === "list" ? (
@@ -222,6 +267,16 @@ function AiChatBot() {
                         </div>
                       ) : (
                         <p>{msg.text}</p>
+                      )}
+                      {/* Model pill */}
+                      {msg.model && (
+                        <span
+                          className={`absolute bottom-1.5 right-4 px-3 py-[3px] text-[10px] rounded-full 
+      bg-black/40 backdrop-blur-md 
+      text-indigo-300 border-2 border-white/10`}
+                        >
+                          {msg.model}
+                        </span>
                       )}
                     </div>
                   )}
@@ -267,11 +322,14 @@ function AiChatBot() {
       {/* Scrollbar */}
       <style jsx>{`
         .chat-scroll::-webkit-scrollbar {
-          width: 6px;
+          width: 4px;
         }
         .chat-scroll::-webkit-scrollbar-thumb {
           background: rgba(99, 102, 241, 0.6);
           border-radius: 10px;
+        }
+        .chat-scroll::-webkit-scrollbar-track {
+          background: transparent;
         }
       `}</style>
     </div>

@@ -1,20 +1,9 @@
 import { NextResponse } from "next/server";
 import { GoogleGenerativeAI } from "@google/generative-ai";
+import { HFClinet } from "@/lib/hf";
 
-export async function POST(req) {
-  try {
-    const { message } = await req.json();
-    const apiKey = process.env.GEMINI_API_KEY;
-
-    if (!apiKey) {
-      return NextResponse.json({ error: "API Key missing" }, { status: 500 });
-    }
-
-    const genAI = new GoogleGenerativeAI(apiKey);
-
-    const model = genAI.getGenerativeModel({ model: "gemini-2.5-flash" });
-
-    const prompt = `
+// Define the System Prompt once to be used by both models
+const SYSTEM_PROMPT = `
 You are **Rupz**, the personal AI assistant of **Roopesh Kumar**.
 
 === IDENTITY & ROLE ===
@@ -150,28 +139,95 @@ If the user asks about job offers, joining a startup, or collaborations:
     - Do NOT wrap JSON in markdown
     - Do NOT add extra text outside JSON
     - Output must be valid JSON ONLY
-
-=== USER QUESTION ===
-${message}
 `;
 
-    const result = await model.generateContent(prompt);
-    const response = await result.response;
-    const aiText = response.text();
-    let parsed;
+export async function POST(req) {
+  let aiText = "";
+  let usedModel = "";
 
+  try {
+    const { message } = await req.json();
+
+    // ==========================================
+    // ATTEMPT 1: GEMINI
+    // ==========================================
+    try {
+      const apiKey = process.env.GEMINI_API_KEY;
+      if (!apiKey) throw new Error("Gemini API Key missing");
+
+      const genAI = new GoogleGenerativeAI(apiKey);
+      const model = genAI.getGenerativeModel({ model: "gemini-1.5-flash" });
+
+      // Combine System Prompt and User Message for Gemini
+      const geminiPrompt = `${SYSTEM_PROMPT}\n\n=== USER QUESTION ===\n${message}`;
+
+      const result = await model.generateContent(geminiPrompt);
+      const response = await result.response;
+
+      aiText = response.text();
+      usedModel = "Gemini";
+    } catch (geminiError) {
+      console.warn(
+        "Gemini Failed, switching to Hugging Face...",
+        geminiError.message
+      );
+
+      // ==========================================
+      // ATTEMPT 2: HUGGING FACE (Fallback)
+      // ==========================================
+      try {
+        const out = await HFClinet.chatCompletion({
+          model: "meta-llama/Llama-3.1-8B-Instruct",
+          messages: [
+            { role: "system", content: SYSTEM_PROMPT },
+            { role: "user", content: message },
+          ],
+          temperature: 0.7,
+          max_tokens: 1024,
+        });
+
+        aiText = out.choices[0]?.message?.content || "";
+        usedModel = "Hugging Face";
+      } catch (hfError) {
+        console.error("Hugging Face also failed:", hfError);
+        return NextResponse.json(
+          { error: "Both AI services failed. Please try again later." },
+          { status: 500 }
+        );
+      }
+    }
+
+    // ==========================================
+    // RESPONSE PROCESSING (Shared logic)
+    // ==========================================
+
+    // Clean up Markdown code blocks if present (common in Llama/Gemini responses)
+    aiText = aiText
+      .replace(/^```json\s*/, "")
+      .replace(/^```\s*/, "")
+      .replace(/\s*```$/, "");
+
+    let parsed;
     try {
       parsed = JSON.parse(aiText);
-    } catch {
+    } catch (e) {
+      console.error("JSON Parse Error. Raw text:", aiText);
+      // Fallback object if AI returned bad JSON
       parsed = {
         type: "text",
         text: aiText,
       };
     }
 
+    // Add the source model to the response
+    parsed.model = usedModel;
+
     return NextResponse.json(parsed);
   } catch (error) {
-    console.error("Gemini SDK Error:", error);
-    return NextResponse.json({ error: "Gemini API Failed" }, { status: 500 });
+    console.error("General API Error:", error);
+    return NextResponse.json(
+      { error: "Internal Server Error" },
+      { status: 500 }
+    );
   }
 }
