@@ -2,6 +2,7 @@
 import React, { useEffect, useRef, useState } from "react";
 import ai from "@/assests/ai.png";
 import Image from "next/image";
+import { MdAdsClick } from "react-icons/md";
 
 function AiChatBot() {
   const [messages, setMessages] = useState([]);
@@ -89,6 +90,7 @@ function AiChatBot() {
                 type: data.type || "text",
                 isLoading: false,
                 model: data.model || "",
+                links: data.links || [],
               }
             : msg
         )
@@ -268,6 +270,34 @@ function AiChatBot() {
                       ) : (
                         <p>{msg.text}</p>
                       )}
+                      {/* Links Section */}
+                      {msg.links && msg.links.length > 0 && (
+                        <div className="mt-4 rounded-lg bg-black/30 border border-white/10 p-3">
+                          {/* Heading */}
+                          <p className="text-[11px] flex gap-2 items-center uppercase tracking-wide text-gray-400 mb-2">
+                            Related Links <MdAdsClick className="h-4 w-4" />
+                          </p>
+
+                          {/* Links */}
+                          <div className="space-y-1">
+                            {msg.links.map((linkobj, idx) => (
+                              <a
+                                key={idx}
+                                href={linkobj.link}
+                                target="_blank"
+                                rel="noopener noreferrer"
+                                className="flex items-center gap-2 text-sm text-indigo-400 hover:text-indigo-300 transition"
+                              >
+                                <span className="h-1.5 w-1.5 rounded-full bg-indigo-400" />
+                                <span className=" underline-offset-3">
+                                  {linkobj.title}
+                                </span>
+                              </a>
+                            ))}
+                          </div>
+                        </div>
+                      )}
+
                       {/* Model pill */}
                       {msg.model && (
                         <span
