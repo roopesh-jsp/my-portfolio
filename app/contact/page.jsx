@@ -7,7 +7,7 @@ import { socialLinks } from "@/data/constants";
 function ContactPg() {
   const [formData, setFormData] = useState({
     name: "",
-    email: "",
+    contact: "",
     message: "",
   });
 
@@ -18,10 +18,48 @@ function ContactPg() {
     });
   };
 
-  const handleSubmit = (e) => {
+  const isValidEmail = (value) => /^[^\s@]+@[^\s@]+\.[^\s@]+$/.test(value);
+
+  const isValidPhone = (value) => /^[6-9]\d{9}$/.test(value); // Indian phone numbers
+
+  const handleSubmit = async (e) => {
     e.preventDefault();
-    console.log("Form Data Submitted:", formData);
-    setFormData({ name: "", email: "", message: "" });
+
+    const { contact } = formData;
+
+    const emailValid = isValidEmail(contact);
+    const phoneValid = isValidPhone(contact);
+
+    // ❌ Block if neither email nor phone is valid
+    if (!emailValid && !phoneValid) {
+      alert("Please enter a valid Email or Phone number");
+      return;
+    }
+
+    try {
+      const res = await fetch("/api/resend", {
+        method: "POST",
+        headers: {
+          "Content-Type": "application/json",
+        },
+        body: JSON.stringify({
+          ...formData,
+          contactType: emailValid ? "email" : "phone",
+        }),
+      });
+
+      const result = await res.json();
+
+      if (!res.ok) {
+        throw new Error(result.error || "Something went wrong");
+      }
+
+      alert("Message sent successfully 🚀");
+      setFormData({ name: "", contact: "", message: "" });
+    } catch (error) {
+      console.error(error);
+      alert("Failed to send message ❌");
+    }
   };
 
   return (
@@ -69,12 +107,12 @@ function ContactPg() {
           </div>
 
           <div className="mb-4">
-            <label className="block text-sm mb-2">Email</label>
+            <label className="block text-sm mb-2">contact - email/phone</label>
             <input
-              type="email"
-              name="email"
-              placeholder="Your Email"
-              value={formData.email}
+              type="text"
+              name="contact"
+              placeholder="Your email/phone"
+              value={formData.contact}
               onChange={handleChange}
               className="w-full px-4 py-3 rounded-lg bg-transparent border border-gray-600 text-white focus:outline-none focus:border-[#5454D4]"
               required
