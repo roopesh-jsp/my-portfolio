@@ -10,6 +10,9 @@ function ContactPg() {
     contact: "",
     message: "",
   });
+  const [loading, setLoading] = useState(false);
+  const [error, setError] = useState("");
+  const [success, setSuccess] = useState("");
 
   const handleChange = (e) => {
     setFormData({
@@ -25,18 +28,28 @@ function ContactPg() {
   const handleSubmit = async (e) => {
     e.preventDefault();
 
-    const { contact } = formData;
+    setError("");
+    setSuccess("");
+
+    const { name, contact, message } = formData;
+
+    // 🔴 Empty field check
+    if (!name.trim() || !contact.trim() || !message.trim()) {
+      setError("All fields are required");
+      return;
+    }
 
     const emailValid = isValidEmail(contact);
     const phoneValid = isValidPhone(contact);
 
-    // ❌ Block if neither email nor phone is valid
     if (!emailValid && !phoneValid) {
-      alert("Please enter a valid Email or Phone number");
+      setError("Please enter a valid Email or Phone number");
       return;
     }
 
     try {
+      setLoading(true);
+
       const res = await fetch("/api/resend", {
         method: "POST",
         headers: {
@@ -54,11 +67,12 @@ function ContactPg() {
         throw new Error(result.error || "Something went wrong");
       }
 
-      alert("Message sent successfully 🚀");
+      setSuccess("Message sent successfully 🚀");
       setFormData({ name: "", contact: "", message: "" });
-    } catch (error) {
-      console.error(error);
-      alert("Failed to send message ❌");
+    } catch (err) {
+      setError(err.message || "Failed to send message ❌");
+    } finally {
+      setLoading(false);
     }
   };
 
@@ -98,11 +112,11 @@ function ContactPg() {
             <input
               type="text"
               name="name"
+              disabled={loading}
               placeholder="Your Name"
               value={formData.name}
               onChange={handleChange}
               className="w-full px-4 py-3 rounded-lg bg-transparent border border-gray-600 text-white focus:outline-none focus:border-[#5454D4]"
-              required
             />
           </div>
 
@@ -111,11 +125,11 @@ function ContactPg() {
             <input
               type="text"
               name="contact"
+              disabled={loading}
               placeholder="Your email/phone"
               value={formData.contact}
               onChange={handleChange}
               className="w-full px-4 py-3 rounded-lg bg-transparent border border-gray-600 text-white focus:outline-none focus:border-[#5454D4]"
-              required
             />
           </div>
 
@@ -123,20 +137,41 @@ function ContactPg() {
             <label className="block text-sm mb-2">Message</label>
             <textarea
               rows={4}
+              disabled={loading}
               name="message"
               placeholder="Your Message"
               value={formData.message}
               onChange={handleChange}
               className="w-full px-4 py-3 rounded-lg bg-transparent border border-gray-600 text-white focus:outline-none focus:border-[#5454D4]"
-              required
             ></textarea>
           </div>
 
+          {/* Error Message */}
+          {error && (
+            <div className="mb-4 rounded-lg border border-red-500/40 bg-red-500/10 px-4 py-3 text-sm text-red-400">
+              {error}
+            </div>
+          )}
+
+          {/* Success Message */}
+          {success && (
+            <div className="mb-4 rounded-lg border border-green-500/40 bg-green-500/10 px-4 py-3 text-sm text-green-400">
+              {success}
+            </div>
+          )}
+
           <button
             type="submit"
-            className="w-full flex items-center justify-center gap-2 bg-[#5454D4] hover:bg-[#4040B3] text-white font-semibold py-3 rounded-lg transition-colors"
+            disabled={loading}
+            className={`w-full flex items-center justify-center gap-2 font-semibold py-3 rounded-lg transition-colors
+    ${
+      loading
+        ? "bg-gray-600 cursor-not-allowed"
+        : "bg-[#5454D4] hover:bg-[#4040B3]"
+    }`}
           >
-            Send Message <Send size={18} />
+            {loading ? "Sending..." : "Send Message"}
+            {!loading && <Send size={18} />}
           </button>
         </motion.form>
 
