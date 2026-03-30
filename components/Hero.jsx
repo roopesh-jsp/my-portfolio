@@ -17,7 +17,7 @@ function Hero() {
       {/* Left Content */}
       <div className="max-w-xl space-y-6 mb-[20px] lg:mb-0">
         <h1 className="text-4xl md:text-6xl font-bold">
-          Turning Ideas into <span className="text-indigo-400">Code</span>
+          I'm roopesh Turning Ideas into Code . . . 
         </h1>
         <p className="text-gray-300 text-lg w-full leading-relaxed">
           Hi, I am{" "}
